@@ -2,15 +2,51 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    await queryInterface.bulkInsert('UserCarInfo', [{
+      brand: 'Tesla',
+      model: 'Model Y AWD',
+      year: 2022,
+      mileage: 5000,
+      range_mi: 279,
+      range_km: 449,
+      kWh_100mi: 28,
+      kWh_100km: 17,
+      createdAt: new Date(),
+      upadtedAt: new Date()
+      }, {
+      brand: 'Tesla',
+      model: 'Model X Plaid (22in Wheels)',
+      year: 2022,
+      mileage: 2000,
+      range_mi: 311,
+      range_km: 501,
+      kWh_100mi: 37,
+      kWh_100km: 23,
+      createdAt: new Date(),
+      upadtedAt: new Date()
+      }, {
+      brand: 'Tesla',
+      model: 'Model S Plaid (21in Wheels)',
+      year: 2022,
+      mileage: 2500,
+      range_mi: 348,
+      range_km: 560,
+      kWh_100mi: 33,
+      kWh_100km: 21,
+      createdAt: new Date(),
+      upadtedAt: new Date()
+      }, {
+      brand: 'Tesla',
+      model: 'Model 3 Long Range AWD',
+      year: 2022,
+      mileage: 1500,
+      range_mi: 358,
+      range_km: 576,
+      kWh_100mi: 26,
+      kWh_100km: 16,
+      createdAt: new Date(),
+      upadtedAt: new Date()
+      }], {});
   },
 
   async down (queryInterface, Sequelize) {
