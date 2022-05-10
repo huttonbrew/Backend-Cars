@@ -35,11 +35,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    kWhper100_mi:{ 
+    kWh_100mi:{ 
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    kWhper100_km:{ 
+    kWh_100km:{ 
       type: DataTypes.INTEGER,
       allowNull: false
     }
