@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-
     model: {
       type: DataTypes.STRING,
       allowNull: false
@@ -32,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-
     range_mi: {
       type:DataTypes.INTEGER,
       allowNull: false
@@ -52,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'UserCarInfo',
+    freezeTableName: true
   });
   return UserCarInfo;
 };
