@@ -60,7 +60,7 @@ app.get('/Userinfo', async (req, res) => {
     try{
     let Userinfos = await Userinfo.findAll();
 
-   console.log(Userinfos);
+   //console.log(Userinfos);
     res.json(Userinfo);    
     } catch(error){
         console.log(error)
