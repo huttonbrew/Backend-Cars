@@ -4,9 +4,12 @@ module.exports = {
     await queryInterface.createTable('UserCarInfos', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: students,
+          key: 'id',
+      }
       },
       brand: {
         type: Sequelize.STRING

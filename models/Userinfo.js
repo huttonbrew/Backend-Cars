@@ -44,8 +44,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {
+  hooks: {
+    beforeCreate: async (user) => {
+      if (user.password) {
+      const salt = await bcrypt.genSaltSync(10, 'a');
+      user.password = bcrypt.hashSync(user.password, salt);
+      }
+    }
+  }
+  }, {
     sequelize,
     modelName: 'Userinfo',
+    freezeTableName: true,
   });
   return Userinfo;
 };

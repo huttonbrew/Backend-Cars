@@ -2,12 +2,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('ListofEVs', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
       brand: {
         type: Sequelize.STRING
       },
@@ -26,7 +20,7 @@ module.exports = {
       kWhper100_mi: {
         type: Sequelize.INTEGER
       },
-      kWhper100km: {
+      kWhper100_km: {
         type: Sequelize.INTEGER
       },
       createdAt: {

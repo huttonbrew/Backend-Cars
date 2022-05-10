@@ -1,5 +1,17 @@
 {
+  "name": "evproject",
+  "version": "1.0.0",
+  "description": "ev stats",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "db:up": "npx sequelize-cli db:migrate",
+    "db:down": "npx sequelize-cli db:drop",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "db:destroy": "dropdb postgres"
+  },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "express-es6-template-engine": "^2.2.3",

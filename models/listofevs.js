@@ -39,14 +39,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    kWhper100km:{ 
+    kWhper100_km:{ 
       type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
-    
     modelName: 'ListofEVs',
+    freezeTableName: true
   });
   return ListofEVs;
 };
