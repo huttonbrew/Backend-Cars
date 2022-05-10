@@ -17,10 +17,10 @@ module.exports = {
       range_km: {
         type: Sequelize.INTEGER
       },
-      kWhper100_mi: {
+      kWh_100mi: {
         type: Sequelize.INTEGER
       },
-      kWhper100_km: {
+      kWh_100km: {
         type: Sequelize.INTEGER
       },
       createdAt: {
