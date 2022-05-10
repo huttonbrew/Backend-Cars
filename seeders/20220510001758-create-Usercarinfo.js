@@ -2,7 +2,8 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('UserCarInfo', [{
+    await queryInterface.bulkInsert('userCarInfo', [{
+      id: 1,
       brand: 'Tesla',
       model: 'Model Y AWD',
       year: 2022,
@@ -12,8 +13,9 @@ module.exports = {
       kWh_100mi: 28,
       kWh_100km: 17,
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }, {
+      id: 2,
       brand: 'Tesla',
       model: 'Model X Plaid (22in Wheels)',
       year: 2022,
@@ -23,8 +25,9 @@ module.exports = {
       kWh_100mi: 37,
       kWh_100km: 23,
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }, {
+      id: 3,
       brand: 'Tesla',
       model: 'Model S Plaid (21in Wheels)',
       year: 2022,
@@ -34,8 +37,9 @@ module.exports = {
       kWh_100mi: 33,
       kWh_100km: 21,
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }, {
+      id: 4,
       brand: 'Tesla',
       model: 'Model 3 Long Range AWD',
       year: 2022,
@@ -45,7 +49,7 @@ module.exports = {
       kWh_100mi: 26,
       kWh_100km: 16,
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }], {});
   },
 

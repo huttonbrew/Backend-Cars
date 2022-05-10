@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Userinfo extends Model {
+  class listOfEvs extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,49 +13,40 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Userinfo.init(
+  listOfEvs.init(
     {
-    firstName: {
+    brand: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastName: {
-      type: DataTypes.STRING,
+    model: {
+      type:DataTypes.STRING,
       allowNull: false
     },
-    city: {
-      type: DataTypes.STRING,
+    year: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    country: {
-      type: DataTypes.STRING,
+    range_mi: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    email: {
-      type: DataTypes.STRING,
+    range_km: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    username: {
-      type: DataTypes.STRING,
+    kWh_100mi:{ 
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    password: {
-      type: DataTypes.STRING,
+    kWh_100km:{ 
+      type: DataTypes.INTEGER,
       allowNull: false
     }
-  }, {
-  hooks: {
-    beforeCreate: async (user) => {
-      if (user.password) {
-      const salt = await bcrypt.genSaltSync(10, 'a');
-      user.password = bcrypt.hashSync(user.password, salt);
-      }
-    }
-  }
   }, {
     sequelize,
-    modelName: 'Userinfo',
-    freezeTableName: true,
+    modelName: 'listOfEvs',
+    freezeTableName: true
   });
-  return Userinfo;
+  return listOfEvs;
 };
