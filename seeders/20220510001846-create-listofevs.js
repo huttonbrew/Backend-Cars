@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('People', [
+    await queryInterface.bulkInsert('listOfEvs', [
     //https://www.fueleconomy.gov/
     //2012
     {
@@ -14,7 +14,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2013
@@ -27,7 +27,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (60 kW-hr battery pack)',
@@ -37,7 +37,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (85 kW-hr battery pack)',
@@ -47,7 +47,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2014
@@ -60,7 +60,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (85 kW-hr battery pack)',
@@ -70,7 +70,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD (85 kW-hr battery pack)',
@@ -80,7 +80,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2015
@@ -93,7 +93,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - P85D',
@@ -103,7 +103,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 90D',
@@ -113,7 +113,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 85D',
@@ -123,7 +123,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 70D',
@@ -133,7 +133,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (90 kW-hr battery pack)',
@@ -143,7 +143,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (85 kW-hr battery pack)',
@@ -153,7 +153,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (60 kW-hr battery pack)',
@@ -163,7 +163,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2016 Model S
@@ -176,7 +176,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD (70 kW-hr battery pack)',
@@ -186,7 +186,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD (75 kW-hr battery pack)',
@@ -196,7 +196,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD (85 kW-hr battery pack)',
@@ -206,7 +206,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD (90 kW-hr battery pack)',
@@ -216,7 +216,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 60D',
@@ -226,7 +226,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 75D',
@@ -236,7 +236,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 85D',
@@ -246,7 +246,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 90D',
@@ -256,7 +256,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - P100D',
@@ -266,7 +266,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - P85D',
@@ -276,7 +276,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - P90D',
@@ -286,7 +286,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2016 Model X
@@ -299,7 +299,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - 75D',
@@ -309,7 +309,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - 90D',
@@ -319,7 +319,7 @@ module.exports = {
     kWh_100mi: 37,
     kWh_100km: 23,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - 100D',
@@ -329,7 +329,7 @@ module.exports = {
     kWh_100mi: 39,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - P90D',
@@ -339,7 +339,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     },
     
     //2017 Model 2
@@ -352,7 +352,7 @@ module.exports = {
     kWh_100mi: 27,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2017 Model S
@@ -365,7 +365,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S (75 kW-hr battery pack)',
@@ -375,7 +375,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 100D',
@@ -385,7 +385,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 60D',
@@ -395,7 +395,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 75D',
@@ -405,7 +405,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - 90D',
@@ -415,7 +415,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - P100D',
@@ -425,7 +425,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S AWD - P90D',
@@ -435,7 +435,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2017 Model X
@@ -448,7 +448,7 @@ module.exports = {
     kWh_100mi: 39,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - 60D',
@@ -458,7 +458,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - 75D',
@@ -468,7 +468,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - 90D',
@@ -478,7 +478,7 @@ module.exports = {
     kWh_100mi: 37,
     kWh_100km: 23,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - P100D',
@@ -488,7 +488,7 @@ module.exports = {
     kWh_100mi: 39,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X AWD - P90D',
@@ -498,7 +498,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     },
     
     //2018 Model 3
@@ -511,7 +511,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range AWD',
@@ -521,7 +521,7 @@ module.exports = {
     kWh_100mi: 29,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range AWD Performance',
@@ -531,7 +531,7 @@ module.exports = {
     kWh_100mi: 29,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Mid Range',
@@ -541,7 +541,7 @@ module.exports = {
     kWh_100mi: 27,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2018 Model S
@@ -554,7 +554,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S 75D',
@@ -564,7 +564,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S 75kWh',
@@ -574,7 +574,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S P100D',
@@ -584,7 +584,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2018 Model X
@@ -597,7 +597,7 @@ module.exports = {
     kWh_100mi: 39,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X 75D	',
@@ -607,7 +607,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2019 Model 3
@@ -620,7 +620,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range AWD Performance',
@@ -630,7 +630,7 @@ module.exports = {
     kWh_100mi: 29,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Mid Range',
@@ -640,7 +640,7 @@ module.exports = {
     kWh_100mi: 27,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Standard Range',
@@ -650,7 +650,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Standard Range Plus',
@@ -660,7 +660,7 @@ module.exports = {
     kWh_100mi: 25,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2019 Model S
@@ -673,7 +673,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S 75D',
@@ -683,7 +683,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Long Range',
@@ -693,7 +693,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S P100D',
@@ -703,7 +703,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Performance (19in Wheels)',
@@ -713,7 +713,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Performance (21in Wheels)',
@@ -723,7 +723,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Standard Range',
@@ -733,7 +733,7 @@ module.exports = {
     kWh_100mi: 31,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2019 Model X
@@ -746,7 +746,7 @@ module.exports = {
     kWh_100mi: 39,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X 75D',
@@ -756,7 +756,7 @@ module.exports = {
     kWh_100mi: 36,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Long Range',
@@ -766,7 +766,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X P100D',
@@ -776,7 +776,7 @@ module.exports = {
     kWh_100mi: 40,
     kWh_100km: 25,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Performance (22in Wheels)',
@@ -786,7 +786,7 @@ module.exports = {
     kWh_100mi: 43,
     kWh_100km: 27,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2020 Model 3
@@ -799,7 +799,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range AWD',
@@ -809,7 +809,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range Performance AWD (18in)',
@@ -819,7 +819,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range Performance AWD (19in)',
@@ -829,7 +829,7 @@ module.exports = {
     kWh_100mi: 29,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Long Range Performance AWD (20in)',
@@ -839,7 +839,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Mid Range',
@@ -849,7 +849,7 @@ module.exports = {
     kWh_100mi: 27,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Standard Range',
@@ -859,7 +859,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Standard Range Plus',
@@ -869,7 +869,7 @@ module.exports = {
     kWh_100mi: 24,
     kWh_100km: 15,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2020 Model S
@@ -882,7 +882,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Long Range Plus',
@@ -892,7 +892,7 @@ module.exports = {
     kWh_100mi: 29,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Performance (19in Wheels)',
@@ -902,7 +902,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Performance (21in Wheels)',
@@ -912,7 +912,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Standard Range',
@@ -922,7 +922,7 @@ module.exports = {
     kWh_100mi: 31,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2020 Model X
@@ -935,7 +935,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Long Range Plus',
@@ -945,7 +945,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Performance (20in Wheels)',
@@ -955,7 +955,7 @@ module.exports = {
     kWh_100mi: 38,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Performance (22in Wheels)',
@@ -965,7 +965,7 @@ module.exports = {
     kWh_100mi: 43,
     kWh_100km: 27,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Standard Range',
@@ -975,7 +975,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2020 Model Y
@@ -988,7 +988,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y Performance AWD',
@@ -998,7 +998,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y Performance AWD (21in Wheels)',
@@ -1008,7 +1008,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2021 Model 3
@@ -1021,7 +1021,7 @@ module.exports = {
     kWh_100mi: 25,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Performance AWD',
@@ -1031,7 +1031,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Standard Range Plus RWD',
@@ -1041,7 +1041,7 @@ module.exports = {
     kWh_100mi: 24,
     kWh_100km: 15,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     // 2021 Model S
@@ -1054,7 +1054,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Performance (19in Wheels)',
@@ -1064,7 +1064,7 @@ module.exports = {
     kWh_100mi: 31,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Performance (21in Wheels)',
@@ -1074,7 +1074,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Plaid (21in Wheels)',
@@ -1084,7 +1084,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2021 Model X
@@ -1097,7 +1097,7 @@ module.exports = {
     kWh_100mi: 32,
     kWh_100km: 20,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Performance (20in Wheels)',
@@ -1107,7 +1107,7 @@ module.exports = {
     kWh_100mi: 35,
     kWh_100km: 22,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Performance (22in Wheels)',
@@ -1117,7 +1117,7 @@ module.exports = {
     kWh_100mi: 39,
     kWh_100km: 24,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2021 Model Y
@@ -1130,7 +1130,7 @@ module.exports = {
     kWh_100mi: 27,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y Performance AWD',
@@ -1140,7 +1140,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y Standard Range RWD',
@@ -1150,7 +1150,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     },
     
     //2022 Model 3
@@ -1163,7 +1163,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 Performance AWD',
@@ -1173,7 +1173,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model 3 RWD',
@@ -1183,7 +1183,7 @@ module.exports = {
     kWh_100mi: 25,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     },
     
     // 2022 Model S
@@ -1196,7 +1196,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Plaid (19in Wheels)',
@@ -1206,7 +1206,7 @@ module.exports = {
     kWh_100mi: 29,
     kWh_100km: 18,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model S Plaid (21in Wheels)',
@@ -1216,7 +1216,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2022 Model X
@@ -1229,7 +1229,7 @@ module.exports = {
     kWh_100mi: 33,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Plaid (20in Wheels)',
@@ -1239,7 +1239,7 @@ module.exports = {
     kWh_100mi: 34,
     kWh_100km: 21,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model X Plaid (22in Wheels)',
@@ -1249,7 +1249,7 @@ module.exports = {
     kWh_100mi: 37,
     kWh_100km: 23,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, 
     
     //2022 Model Y
@@ -1262,7 +1262,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y Long Range AWD',
@@ -1272,7 +1272,7 @@ module.exports = {
     kWh_100mi: 28,
     kWh_100km: 17,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y Performance AWD',
@@ -1282,7 +1282,7 @@ module.exports = {
     kWh_100mi: 30,
     kWh_100km: 19,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     }, {
     brand: 'Tesla',
     model: 'Model Y RWD',
@@ -1292,7 +1292,7 @@ module.exports = {
     kWh_100mi: 26,
     kWh_100km: 16,
     createdAt: new Date(),
-    upadtedAt: new Date()
+    updatedAt: new Date()
     },], {});
   },
 

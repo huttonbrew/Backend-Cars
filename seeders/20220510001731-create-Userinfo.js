@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Userinfo', [{
+    await queryInterface.bulkInsert('userInfo', [{
       firstName: 'Guest',
       lastName: 'Doe',
       city: 'Atlanta',
@@ -11,7 +11,7 @@ module.exports = {
       username: 'guest',
       password: '',
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }, {
       firstName: 'Victor',
       lastName: 'Brew',
@@ -21,7 +21,7 @@ module.exports = {
       username: 'vbrew',
       password: '',
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }, {
       firstName: 'Daniel',
       lastName: 'Donato',
@@ -31,7 +31,7 @@ module.exports = {
       username: 'ddonato',
       password: '',
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }, {
       firstName: 'Sam',
       lastName: 'Moon',
@@ -41,7 +41,7 @@ module.exports = {
       username: 'smoon',
       password: '',
       createdAt: new Date(),
-      upadtedAt: new Date()
+      updatedAt: new Date()
       }], {});
   },
 
