@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-const { sequelize, Userinfo } = require('./models')
+const { Sequelize, userInfo, listOfEvs, userCarInfo } = require('sequelize')
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
+const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/cars_db')
+
 
 //app.use('/', require('./routes/endpoints'));
 const winston = require('winston');
@@ -18,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
-
 
 app.use(express())
 
