@@ -1,13 +1,12 @@
 'use strict';
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('UserCarInfos', {
+  async up(queryInterface, Sequelize, userInfo) {
+    await queryInterface.createTable('userCarInfo', {
       id: {
-        allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Userinfos',
+          model: {tableName: 'userInfo'},
           key: 'id',
       }
       },
@@ -20,7 +19,7 @@ module.exports = {
       year: {
         type: Sequelize.INTEGER
       },
-      milage: {
+      mileage: {
         type: Sequelize.INTEGER
       },
       range_mi: {
@@ -46,6 +45,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('UserCarInfos');
+    await queryInterface.dropTable('userCarInfo');
   }
 };
