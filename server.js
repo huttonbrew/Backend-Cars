@@ -1,18 +1,10 @@
 const express = require('express');
 const app = express();
-<<<<<<< HEAD
-const { userInfo, userCarInfo, listOfEvs, Sequelize } = require('./models')
-const bodyParser = require('body-parser');
-const es6Renderer = require('express-es6-template-engine');
-const sequelize = new Sequelize('postgres://victorbrew@localhost:5432/cars_db')
-const apple = require("./models");
-=======
 const { Sequelize, userInfo, listOfEvs, userCarInfo } = require('sequelize')
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
-const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/cars_db')
+const sequelize = new Sequelize('postgres://victorbrew@localhost:5432/cars_db')
 
->>>>>>> 3470e56d2a3c80699355d0bd98d87d3ab3a92fba
 
 console.log(userCarInfo);
 //app.use('/', require('./routes/endpoints'));
@@ -87,13 +79,13 @@ app.get('/listOfEvs', async (req, res) => {
 })
 
 
-app.post('/listOfEvs', async (req, res) => {
-    let listOfEvs  = await ListofEVs.update(
-        { brand, model, year, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
-    )
-    res.statusCode = 200;
-    res.send(listOfEvs);
-});
+// app.post('/listOfEvs', async (req, res) => {
+//     let listOfEvs  = await ListofEVs.update(
+//         { brand, model, year, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
+//     )
+//     res.statusCode = 200;
+//     res.send(listOfEvs);
+// });
 
 
 // app.put('/userinfo', async (req, res) => {
