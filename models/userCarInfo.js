@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {
-    sequelize,
+    sequelize: sequelize,
     modelName: 'userCarInfo',
     freezeTableName: true
   });

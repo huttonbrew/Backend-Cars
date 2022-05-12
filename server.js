@@ -1,16 +1,26 @@
 const express = require('express');
 const app = express();
-const { sequelize, Userinfo } = require('./models')
+const { userInfo, userCarInfo, listOfEvs, Sequelize } = require('./models')
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
+const sequelize = new Sequelize('postgres://victorbrew@localhost:5432/cars_db')
+const apple = require("./models");
 
+console.log(userCarInfo);
 //app.use('/', require('./routes/endpoints'));
 const winston = require('winston');
 
 const moment = require('moment');
+const listofEVs = require('./models/listofEVs').listOfEvs;
+const usercarinfo = require('./models/usercarinfo');
+const userinfo = require('./models/userinfo');
+const { cmyk } = require('color');
+//const userinfo = require('./models/userinfo');
+
+
 
 const pg = require('pg-promise')();
-
+console.log(apple.listOfEvs);
 //To convert the request to readable json format, we use bodyparser package
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false}))
@@ -56,12 +66,12 @@ main()
 
 
 
-app.get('/Userinfo', async (req, res) => {
+app.get('/listOfEvs', async (req, res) => {
     try{
-    let Userinfos = await Userinfo.findAll();
+    let evsList = await listOfEvs.findAll();
 
    //console.log(Userinfos);
-    res.json(Userinfo);    
+    res.json(evsList);    
     } catch(error){
         console.log(error)
         return res.status(500).json({ error: "Something went wrong" })
@@ -69,13 +79,24 @@ app.get('/Userinfo', async (req, res) => {
 
 })
 
-app.post('/Userinfo', async (req, res) => {
-    let createdUser = await Userinfo.create(
-        { firstname, lastname, city, country, emial, username, password } = req.body
+
+app.post('/listOfEvs', async (req, res) => {
+    let listOfEvs  = await ListofEVs.update(
+        { brand, model, year, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
     )
     res.statusCode = 200;
-    res.send(createdUser);
+    res.send(listOfEvs);
 });
+
+
+// app.put('/userinfo', async (req, res) => {
+//     let userinfo = await userinfo.create(req.body);
+//   res.json(userinfo);
+
+// res.statusCode = 200;
+//     res.send(listOfEvs)
+
+// };
 
 
 
