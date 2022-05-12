@@ -19,6 +19,7 @@
     "express-handlebars": "^6.0.5",
     "handlebars": "^4.7.7",
     "moment": "^2.29.3",
+    "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "pg-promise": "^10.11.1",
@@ -26,6 +27,7 @@
     "sequelize-cli": "^6.4.1",
     "sqlite3": "^5.0.8",
     "winston": "^3.7.2"
+<<<<<<< HEAD
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
@@ -41,4 +43,7 @@
     "url": "https://github.com/huttonbrew/Backend-Cars/issues"
   },
   "homepage": "https://github.com/huttonbrew/Backend-Cars#readme"
+=======
+  }
+>>>>>>> 3470e56d2a3c80699355d0bd98d87d3ab3a92fba
 }

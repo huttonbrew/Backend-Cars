@@ -1,10 +1,18 @@
 const express = require('express');
 const app = express();
+<<<<<<< HEAD
 const { userInfo, userCarInfo, listOfEvs, Sequelize } = require('./models')
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
 const sequelize = new Sequelize('postgres://victorbrew@localhost:5432/cars_db')
 const apple = require("./models");
+=======
+const { Sequelize, userInfo, listOfEvs, userCarInfo } = require('sequelize')
+const bodyParser = require('body-parser');
+const es6Renderer = require('express-es6-template-engine');
+const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/cars_db')
+
+>>>>>>> 3470e56d2a3c80699355d0bd98d87d3ab3a92fba
 
 console.log(userCarInfo);
 //app.use('/', require('./routes/endpoints'));
@@ -28,7 +36,6 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
-
 
 app.use(express())
 
