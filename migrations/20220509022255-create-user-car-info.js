@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
   async up(queryInterface, Sequelize, userInfo) {
     await queryInterface.createTable('userCarInfo', {
@@ -8,6 +11,14 @@ module.exports = {
         references: {
           model: {tableName: 'userInfo'},
           key: 'id',
+      }
+      },
+      username: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        references: {
+          model: {tableName: 'userInfo'},
+          key: 'username',
       }
       },
       brand: {
