@@ -53,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   }, {
-    sequelize: sequelize,
+    sequelize,
     modelName: 'userInfo',
     freezeTableName: true,
   });

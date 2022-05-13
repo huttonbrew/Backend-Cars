@@ -27,10 +27,6 @@
     "sequelize-cli": "^6.4.1",
     "sqlite3": "^5.0.8",
     "winston": "^3.7.2"
-<<<<<<< HEAD
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
   },
   "repository": {
     "type": "git",
@@ -43,7 +39,4 @@
     "url": "https://github.com/huttonbrew/Backend-Cars/issues"
   },
   "homepage": "https://github.com/huttonbrew/Backend-Cars#readme"
-=======
-  }
->>>>>>> 3470e56d2a3c80699355d0bd98d87d3ab3a92fba
 }

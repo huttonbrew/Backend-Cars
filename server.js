@@ -20,7 +20,8 @@ const { cmyk } = require('color');
 
 
 const pg = require('pg-promise')();
-console.log(apple.listOfEvs);
+
+
 //To convert the request to readable json format, we use bodyparser package
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false}))
@@ -101,7 +102,4 @@ app.get('/listOfEvs', async (req, res) => {
 
 app.listen(6500, async ()=> {
     console.log('Server is running on port 6500')
-    await sequelize.authenticate()
-    console.log("Database Connected!!")
-    //await sequelize.sync()
 })
