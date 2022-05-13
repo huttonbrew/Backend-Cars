@@ -43,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
+<<<<<<< HEAD
   }, {
   hooks: {
     beforeCreate: async (user) => {
@@ -54,6 +55,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   }, {
     sequelize: sequelize,
+=======
+  },  {
+    sequelize,
+>>>>>>> 48e87e38cb8d451d277e5b458441d42d485c8803
     modelName: 'userInfo',
     freezeTableName: true,
   });

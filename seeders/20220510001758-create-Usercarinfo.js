@@ -4,6 +4,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('userCarInfo', [{
       id: 1,
+      username: 'guest',
       brand: 'Tesla',
       model: 'Model Y AWD',
       year: 2022,
@@ -16,6 +17,7 @@ module.exports = {
       updatedAt: new Date()
       }, {
       id: 2,
+      username: 'vbrew',
       brand: 'Tesla',
       model: 'Model X Plaid (22in Wheels)',
       year: 2022,
@@ -28,6 +30,7 @@ module.exports = {
       updatedAt: new Date()
       }, {
       id: 3,
+      username: 'ddonato',
       brand: 'Tesla',
       model: 'Model S Plaid (21in Wheels)',
       year: 2022,
@@ -40,6 +43,7 @@ module.exports = {
       updatedAt: new Date()
       }, {
       id: 4,
+      username: 'smoon',
       brand: 'Tesla',
       model: 'Model 3 Long Range AWD',
       year: 2022,
