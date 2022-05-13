@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   userCarInfo.init(
     {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+      },
     brand: {
       type: DataTypes.STRING,
       allowNull: false
@@ -27,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull: false
     },
-    milage: {
+    mileage: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
