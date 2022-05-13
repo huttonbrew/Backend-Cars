@@ -20,7 +20,6 @@ app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
 
-
 app.use(express())
 
 const logger = winston.createLogger({
