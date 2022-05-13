@@ -25,7 +25,7 @@ module.exports = {
       }, {
       firstName: 'Daniel',
       lastName: 'Donato',
-      city: '',
+      city: 'Toronto',
       country: 'Canada',
       email: 'ddonato@dgcrafts.com',
       username: 'ddonato',
