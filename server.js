@@ -179,7 +179,7 @@ app.put('/userCarInfo/:id', async (req, res) => {
         }
     })
     
-    res.send(newUserCarInfo)
+    res.sendStatus(200, newUserCarInfo)
     console.log(newUserCarInfo)
 });
 
@@ -206,7 +206,7 @@ app.put('/listOfEvs/:id', async (req, res) => {
         }
     })
     
-    res.send(newlistOfEvs)
+    res.sendStatus(200, newlistOfEvs)
     console.log(newlistOfEvs)
 
 });
@@ -234,7 +234,7 @@ app.put('/userInfo/:id', async (req, res) => {
         }
     })
     
-    res.send(newuserInfo)
+    res.sendStatus(200, newuserInfo)
     console.log(newuserInfo)
 });
 
