@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
 const { sequelize, userInfo, userCarInfo, listOfEvs } = require('./models');
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
@@ -87,7 +88,15 @@ app.get('/EV', async (req, res) => {
 //creating an account
 app.post('/userInfo', async (req, res) => {
     let createdUser = await userInfo.create(
-        {firstName, lastName, city, country, email, username, password} = req.body
+        {
+            firstName: req.body.firstName, 
+            lastName: req.body.lastName, 
+            city: req.body.city, 
+            country: req.body.country, 
+            email: req.body.email, 
+            username: req.body.username,
+            password: await bcrypt.hash(req.body.password, 12)
+         }
     )
     createdUser = await userCarInfo.create(
         {username, brand, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
@@ -213,7 +222,7 @@ app.put('/userInfo/:id', async (req, res) => {
 
 
 app.listen(5900, async ()=> {
-    console.log('Server is running on port 6500')
+    console.log('Server is running on port 5900')
     // await sequelize.authenticate()
     // console.log("Database Connected!!")
     //await sequelize.sync()
