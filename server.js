@@ -125,6 +125,91 @@ app.delete('/userInfo/:id', async (req, res) => {
     }
 })
 
+app.put('/userCarInfo/:id', async (req, res) => {
+
+    await userCarInfo.update(
+        {
+        username: req.body.username,
+        brand:req.body.brand,
+        model:req.body.model,
+        year:req.body.year,
+        mileage: req.body.mileage,
+        range_mi:req.body.range_mi,
+        range_km:req.body.range_km,
+        kWh_100mi:req.body.kWh_100mi,
+        kWh_100km:req.body.kWh_100km
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+    let newUserCarInfo = userCarInfo.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+    
+    res.sendStatus(200, newUserCarInfo)
+    console.log(newUserCarInfo)
+});
+
+app.put('/listOfEvs/:id', async (req, res) => {
+
+    await listOfEvs.update(
+        {
+            brand: req.body.brand,
+            model: req.body.model,
+            year: req.body.year,
+            range_mi: req.body.range_mi,
+            range_km: req.body.range_km,
+            kWh_100mi: req.body.kWh_100mi,
+            kWh_100km: req.body.kWh_100km
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+    let newlistOfEvs = listOfEvs.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+    
+    res.sendStatus(200, newlistOfEvs)
+    console.log(newlistOfEvs)
+
+});
+
+app.put('/userInfo/:id', async (req, res) => {
+
+    await userInfo.update(
+        {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            city: req.body.city,
+            country: req.body.country,
+            email: req.body.email,
+            username: req.body.username,
+            password: req.body.password,
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+    let newuserInfo = userInfo.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+    
+    res.sendStatus(200, newuserInfo)
+    console.log(newuserInfo)
+});
+
+
 
 
 app.listen(5900, async ()=> {
