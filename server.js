@@ -218,8 +218,30 @@ app.put('/userInfo/:id', async (req, res) => {
     console.log(newuserInfo)
 });
 
+// login authentication
+app.post('/login', async function (req, res){
+    email = req.body.email
 
-
+    if (email == null || req.body.password == null) { // security risk to store pass in variable?
+        res.status(400).send('please fill in all fields')
+    } else {
+        let user = await userInfo.findOne({
+            where: {
+                email: email
+            }
+        })
+        if(user == null) {
+            res.status(404).send('user not found')
+        } else {
+            let isValid = await bcrypt.compare(req.body.password, user.password)
+            if(isValid == true) {
+                res.status(200).send('login successful')
+            } else {
+                res.status(401).send('invalid credentials')
+            }
+        }
+    }
+});
 
 app.listen(5900, async ()=> {
     console.log('Server is running on port 5900')
