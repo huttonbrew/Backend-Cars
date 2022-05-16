@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "victorbrew",
+    "username": "luna",
     "password": null,
-    "database": "cars_db",
+    "database": "postgres",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
