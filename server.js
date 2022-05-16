@@ -224,9 +224,9 @@ app.put('/userInfo/:id', async (req, res) => {
             password: req.body.password,
         }, {
             where:{
-                id: req.params.id
-            }
-        })
+                id: req.params.id,
+            },
+        });
 
     let newuserInfo = userInfo.findOne ({
         where: {
@@ -241,8 +241,12 @@ app.put('/userInfo/:id', async (req, res) => {
 
 
 
+
+
+
+
 app.listen(5900, async ()=> {
-    console.log('Server is running on port 6500')
+    console.log('Server is running on port 5900')
     // await sequelize.authenticate()
     // console.log("Database Connected!!")
     //await sequelize.sync()
