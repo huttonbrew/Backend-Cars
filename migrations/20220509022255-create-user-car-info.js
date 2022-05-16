@@ -6,6 +6,7 @@ module.exports = {
   async up(queryInterface, Sequelize, userInfo) {
     await queryInterface.createTable('userCarInfo', {
       id: {
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
@@ -16,7 +17,12 @@ module.exports = {
       },
       username: {
         type: Sequelize.STRING,
-        allowNull: false,
+      },
+      nickname: {
+        type: Sequelize.STRING,
+      },
+      model: {
+        type: Sequelize.STRING
       },
       brand: {
         type: Sequelize.STRING
@@ -41,6 +47,9 @@ module.exports = {
       },
       kWh_100km: {
         type: Sequelize.INTEGER
+      },
+      image: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -69,6 +69,18 @@ app.get('/userInfo', async (req, res) => {
     //}
 })
 
+app.get('/userCarInfo', async (req, res) => {
+    //try{
+    let Userinfos = await userCarInfo.findAll();
+
+   res.send(Userinfos);
+    // res.json(Userinfo);    
+    // } catch(error){
+    //     console.log(error)
+    //     return res.status(500).json({ error: "Something went wrong" })
+    //}
+})
+
 app.get('/EV', async (req, res) => {
     let car = await listOfEvs.findOne ({
         where: {
@@ -83,6 +95,31 @@ app.get('/EV', async (req, res) => {
         res.statusCode = 200;
         res.send(car);
     }
+})
+
+
+//Garage page (need to change params to query)
+app.get('/garage/', async (req, res) => {
+
+    let userGarage = await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    let car = await listOfEvs.findAll({
+        where: {
+            year: userGarage[0].year,
+            model: userGarage[0].model,
+        }
+    })
+
+    res.render('garage', {
+        locals: {
+            userGarage,
+            car
+        }
+    })
 })
 
 //creating an account
