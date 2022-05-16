@@ -101,6 +101,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th scope="col">Car</th>
                         <th scope="col">Range (mi)</th>
                         <th scope="col">Range (km)</th>
                         <th scope="col">kWh/100mi</th>
@@ -109,6 +110,7 @@
                     </thead>
                     <tbody>
                     <tr>
+                        <th scope="row">${car.year} ${car.model}</th>
                         <td>${car.botRange_mi} ~ ${car.topRange_mi}</td>
                         <td>${car.botRange_km} ~ ${car.topRange_km}</td>
                         <td>${car.top_kWh_100mi} ~ ${car.bot_kWh_100mi}</td>
