@@ -99,7 +99,7 @@ app.get('/EV', async (req, res) => {
 
 
 //Garage page (need to change params to query)
-app.get('/garage/', async (req, res) => {
+app.get('/garage', async (req, res) => {
 
     let userGarage = await userCarInfo.findAll({
         where: {
@@ -120,7 +120,71 @@ app.get('/garage/', async (req, res) => {
             car
         }
     })
-})
+});
+
+//Account page to view/update userInfo
+app.get('/account', async (req, res) => {
+
+    let account = await userInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('account', {
+        locals: {
+            account
+        }
+    })
+});
+
+//userCarInfo page to view/update user car info
+app.get('/car', async (req, res) => {
+
+    let userCar= await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('userCarInfo', {
+        locals: {
+            userCar
+        }
+    })
+});
+
+//userMessage page for a registered user to send us a message
+app.get('/usermessage', async (req, res) => {
+
+    let userInfo = await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('userMessage', {
+        locals: {
+            userInfo
+        }
+    })
+});
+
+//userSubmitCar page to view/update user car info
+app.get('/usersubmitcar', async (req, res) => {
+
+    let userInfo = await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('userMessage', {
+        locals: {
+            userInfo
+        }
+    })
+});
 
 //creating an account
 app.post('/userInfo', async (req, res) => {

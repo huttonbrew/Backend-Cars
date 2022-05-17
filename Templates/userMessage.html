@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+      <div class="container d-flex justify-content-center">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center mb-3">
+            <a class="navbar-brand" href="#"><img
+              id="teslaLogo"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Tesla_T_symbol.svg/800px-Tesla_T_symbol.svg.png"
+              alt="Tesla Logo"
+              draggable="false"
+              height="30"
+            /></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Tesla_T_symbol.svg/800px-Tesla_T_symbol.svg.png" alt="Tesla Logo" height="30">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-4">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="garage?username=${userInfo[0].username}">Your Garage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="account?username=${userInfo[0].username}">Your Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="car?username=${userInfo[0].username}">Your Car</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Log out</a></li>\
+                </a>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+        </div>
+      </div>
+    </nav>
+    <figure class="text-center" style="padding-top: 150px;">
+      <blockquote class="blockquote">
+        <p>Send us a message!</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        We are looking to add other EVs in the future but, for now, we are only accepting Tesla models.
+      </figcaption>
+    </figure>
+    <div class="d-flex justify-content-center">
+        <div class="mb-3"style="max-width: 450px; width: 80%;">
+            <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </div>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</html>
