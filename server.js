@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
 const { sequelize, userInfo, userCarInfo, listOfEvs } = require('./models');
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
@@ -68,10 +69,11 @@ app.get('/userInfo', async (req, res) => {
     //}
 })
 
-app.get('/EV/:model', async (req, res) => {
+app.get('/EV', async (req, res) => {
     let car = await listOfEvs.findOne ({
         where: {
-            model: req.params.model
+            year: req.query.year,
+            model: req.query.model
         }
     })
     if (car == null) {
@@ -83,43 +85,21 @@ app.get('/EV/:model', async (req, res) => {
     }
 })
 
-//inner joing
-// app.get('/EV/:model', async (req, res) => {
-//     let mainData = await userInfo.findAll({
-//         attributes: [firstName, lastName],
-//         include: {
-//             model: userCarInfo,
-//             as: 'carInfo'
-//           }
-//     })
-// })
-
-//pg promise
-// app.get('/EV/:model', async (req, res) => {
-//     await db.oneOrNone(
-//         'SELECT userInfo.firstName, userInfo.lastName, userInfo.username, userCarInfo.brand, userCarInfo.model, userCarInfo.year, userCarInfo.mileage, userCarInfo.range_mi, userCarInfo.range_km, userCarInfo.kWh_100mi, userCarInfo.kWh_100km,
-//         FROM'
-//     )
-// }
-
+//creating an account
 app.post('/userInfo', async (req, res) => {
-    console.log("hi")
-    let createdUser = await userInfo.create({
-        firstName: req.body.firstName, 
-        lastName: req.body.lastName, 
-        city: req.body.city, 
-        country: req.body.country, 
-        email: req.body.email, 
-        username: req.body.username, 
-        password: req.body.password 
-    })
-    res.statusCode = 200;
-    res.send(createdUser);
-});
-
-app.post('/userCarInfo', async (req, res) => {
+    let createdUser = await userInfo.create(
+        {
+            firstName: req.body.firstName, 
+            lastName: req.body.lastName, 
+            city: req.body.city, 
+            country: req.body.country, 
+            email: req.body.email, 
+            username: req.body.username,
+            password: await bcrypt.hash(req.body.password, 12)
+         }
+    )
     createdUser = await userCarInfo.create(
-        { username, brand, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
+        {username, brand, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
     )
     let newUserInfo = await userCarInfo.findOne ({
         where: {
@@ -239,7 +219,51 @@ app.put('/userInfo/:id', async (req, res) => {
 });
 
 
+app.get('/compare', async (req, res) => {
 
+    let compareCars = await listOfEvs.findAll({
+
+        where: {
+            brand: req.params.brand,
+            model: req.params.model
+        }
+    } )
+    res.send(compareCars)
+        
+        
+       
+  
+    
+    })
+
+
+
+
+
+// login authentication
+app.post('/login', async function (req, res){
+    email = req.body.email
+
+    if (email == null || req.body.password == null) { // security risk to store pass in variable?
+        res.status(400).send('please fill in all fields')
+    } else {
+        let user = await userInfo.findOne({
+            where: {
+                email: email
+            }
+        })
+        if(user == null) {
+            res.status(404).send('user not found')
+        } else {
+            let isValid = await bcrypt.compare(req.body.password, user.password)
+            if(isValid == true) {
+                res.status(200).send('login successful')
+            } else {
+                res.status(401).send('invalid credentials')
+            }
+        }
+    }
+});
 
 
 

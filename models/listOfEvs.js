@@ -27,22 +27,38 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    range_mi: {
+    topRange_mi: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    range_km: {
+    botRange_mi: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    kWh_100mi:{ 
+    topRange_km: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    kWh_100km:{ 
+    botRange_km: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    top_kWh_100mi: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    bot_kWh_100mi: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    top_kWh_100km: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    bot_kWh_100km: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'listOfEvs',

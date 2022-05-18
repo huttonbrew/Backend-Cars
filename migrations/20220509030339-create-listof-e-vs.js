@@ -2,6 +2,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('listOfEvs', {
+      id: {
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
       brand: {
         type: Sequelize.STRING
       },
@@ -11,16 +16,28 @@ module.exports = {
       year: {
         type: Sequelize.INTEGER
       },
-      range_mi: {
+      topRange_mi: {
         type: Sequelize.INTEGER
       },
-      range_km: {
+      botRange_mi: {
         type: Sequelize.INTEGER
       },
-      kWh_100mi: {
+      topRange_km: {
         type: Sequelize.INTEGER
       },
-      kWh_100km: {
+      botRange_km: {
+        type: Sequelize.INTEGER
+      },
+      top_kWh_100mi: {
+        type: Sequelize.INTEGER
+      },
+      bot_kWh_100mi: {
+        type: Sequelize.INTEGER
+      },
+      top_kWh_100km: {
+        type: Sequelize.INTEGER
+      },
+      bot_kWh_100km: {
         type: Sequelize.INTEGER
       },
       createdAt: {
