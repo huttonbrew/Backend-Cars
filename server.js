@@ -335,7 +335,6 @@ app.get('/compare', async (req, res) => {
         
         }
 
-
     })
     console.log(compareCars)
     res.send(compareCars)
