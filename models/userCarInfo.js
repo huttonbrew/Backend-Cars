@@ -17,8 +17,13 @@ module.exports = (sequelize, DataTypes) => {
     {
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: false
       },
+    nickname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     brand: {
       type: DataTypes.STRING,
       allowNull: false
@@ -50,6 +55,10 @@ module.exports = (sequelize, DataTypes) => {
     kWh_100km: {
       type:DataTypes.INTEGER,
       allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     sequelize,

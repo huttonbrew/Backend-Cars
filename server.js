@@ -69,9 +69,25 @@ app.get('/userInfo', async (req, res) => {
     //}
 })
 
+app.get('/userCarInfo', async (req, res) => {
+    //try{
+    let Userinfos = await userCarInfo.findAll();
+
+   res.send(Userinfos);
+    // res.json(Userinfo);    
+    // } catch(error){
+    //     console.log(error)
+    //     return res.status(500).json({ error: "Something went wrong" })
+    //}
+})
+
 app.get('/EV', async (req, res) => {
     let car = await listOfEvs.findOne ({
         where: {
+
+                // year: 2012,
+                // model: "Model_S"
+
             year: req.query.year,
             model: req.query.model
         }
@@ -84,6 +100,95 @@ app.get('/EV', async (req, res) => {
         res.send(car);
     }
 })
+
+
+//Garage page (need to change params to query)
+app.get('/garage', async (req, res) => {
+
+    let userGarage = await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    let car = await listOfEvs.findAll({
+        where: {
+            year: userGarage[0].year,
+            model: userGarage[0].model,
+        }
+    })
+
+    res.render('garage', {
+        locals: {
+            userGarage,
+            car
+        }
+    })
+});
+
+//Account page to view/update userInfo
+app.get('/account', async (req, res) => {
+
+    let account = await userInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('account', {
+        locals: {
+            account
+        }
+    })
+});
+
+//userCarInfo page to view/update user car info
+app.get('/car', async (req, res) => {
+
+    let userCar= await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('userCarInfo', {
+        locals: {
+            userCar
+        }
+    })
+});
+
+//userMessage page for a registered user to send us a message
+app.get('/usermessage', async (req, res) => {
+
+    let userInfo = await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('userMessage', {
+        locals: {
+            userInfo
+        }
+    })
+});
+
+//userSubmitCar page to view/update user car info
+app.get('/usersubmitcar', async (req, res) => {
+
+    let userInfo = await userCarInfo.findAll({
+        where: {
+            username: req.query.username
+        }
+    })
+
+    res.render('userMessage', {
+        locals: {
+            userInfo
+        }
+    })
+});
 
 //creating an account
 app.post('/userInfo', async (req, res) => {
@@ -220,14 +325,19 @@ app.put('/userInfo/:id', async (req, res) => {
 
 
 app.get('/compare', async (req, res) => {
-
-    let compareCars = await listOfEvs.findAll({
+ console.log("test")
+    let compareCars = await listOfEvs.findOne({
+        
 
         where: {
-            brand: req.params.brand,
-            model: req.params.model
+            brand: "Tesla",
+           
+        
         }
-    } )
+
+
+    })
+    console.log(compareCars)
     res.send(compareCars)
         
         
@@ -236,7 +346,17 @@ app.get('/compare', async (req, res) => {
     
     })
 
-
+    // app.get('/compare', async (req, res) => {
+    //     //try{
+    //     let list = await listOfEvs.findAll();
+    
+    //    res.send(list);
+    //     res.json(Userinfo);    
+    //     } catch(error){
+    //         console.log(error)
+    //         return res.status(500).json({ error: "Something went wrong" })
+    //     }
+    // })
 
 
 
