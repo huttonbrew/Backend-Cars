@@ -189,6 +189,12 @@ app.get('/usersubmitcar', async (req, res) => {
     })
 });
 
+//Register a new user
+app.get('/register', async (req, res) => {
+    res.render('registration', {
+    })
+});
+
 //creating an account
 app.post('/userInfo', async (req, res) => {
     let createdUser = await userInfo.create(
