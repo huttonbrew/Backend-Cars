@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
+const math = require('math');
 const { sequelize, userInfo, userCarInfo, listOfEvs } = require('./models');
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
@@ -190,6 +191,41 @@ app.get('/usersubmitcar', async (req, res) => {
 app.get('/register', async (req, res) => {
     res.render('registration', {
     })
+});
+
+// calculate averages for all data-related fields
+app.get('/averages', async (req, res) => {
+    // extract all data
+    let cars = await userCarInfo.findAll()
+
+    // list all the properties you care about
+    properties = ['year', 'mileage', 'range_mi', 'range_km', 'kWh_100mi', 'kWh_100km']
+
+    // create a parsing function
+    let parser = (array, stat) => {
+        return array.map(x => x[stat])
+    }
+    // create an averaging function
+    let average = (array) => {
+        let avg = array.reduce((a, b) => a + b)/array.length
+        return math.round(avg)
+    }
+
+    // calculate a bunch of averages and store the results
+    let resultsObj = {}
+
+    for(i=0; i < properties.length; i++) {
+        // parse the metric you care about
+        let parsedArray = parser(cars,properties[i])
+        // calc the average
+        let avg = average(parsedArray)
+        // store the avg to an obj
+        resultsObj[properties[i]] = avg
+    }
+
+    resultsObj.sampleSize = cars.length
+
+    res.status(200).send(resultsObj)
 });
 
 //creating an account
