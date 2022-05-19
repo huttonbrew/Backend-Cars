@@ -85,8 +85,7 @@ app.get('/EV', async (req, res) => {
     let car = await listOfEvs.findOne ({
         where: {
 
-                // year: 2012,
-                // model: "Model_S"
+                
 
             year: req.query.year,
             model: req.query.model
@@ -324,38 +323,51 @@ app.put('/userInfo/:id', async (req, res) => {
 });
 
 
-app.get('/compare', async (req, res) => {
- console.log("test")
-    let compareCars = await listOfEvs.findOne({
+// app.get('/compare', async (req, res) => {
+//  console.log("test")
+//     let compareCars = await listOfEvs.findOne({
         
 
-        where: {
-            brand: "Tesla",
+//         where: {
+//             brand: "Tesla",
            
         
-        }
+//         }
 
-    })
-    console.log(compareCars)
-    res.send(compareCars)
+//     })
+//     console.log(compareCars)
+//     res.send(compareCars)
         
         
        
   
     
-    })
+//     })
 
     // app.get('/compare', async (req, res) => {
     //     //try{
     //     let list = await listOfEvs.findAll();
     
     //    res.send(list);
-    //     res.json(Userinfo);    
+    //     res.json(listOfEvs);    
     //     } catch(error){
     //         console.log(error)
     //         return res.status(500).json({ error: "Something went wrong" })
     //     }
     // })
+
+    app.get('/compare', async (req, res) => {
+        
+        let compareCars = await listOfEvs.findAll();
+    
+       res.send(compareCars);
+        // res.json(Userinfo);    
+        // } catch(error){
+        //     console.log(error)
+        //     return res.status(500).json({ error: "Something went wrong" })
+        //}
+    })
+
 
 
 
