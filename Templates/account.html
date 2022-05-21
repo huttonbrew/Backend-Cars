@@ -60,7 +60,7 @@
         <p class="text-center fs-3" style="padding-top: 130px; margin-bottom: 8px;">Your Account</p>
       </div>
       <div class="d-flex justify-content-center">
-        <form class="row g-3"  style="max-width: 450px; width: 85%;">
+        <form class="row g-3"  style="max-width: 475px; width: 85%;">
           <div class="col-md-6">
             <label for="inputUsername" class="form-label">Username: ${userInfo.username}</label>
           </div>            
@@ -87,33 +87,33 @@
           Update
         </button>
         <div class="dropdown-menu" style="width: 360px;"">
-          <form class="row g-3"style="padding: 15px;">
+          <form class="row g-3"style="padding: 15px;" method="POST" action="/userInfo/${userInfo.username}">
             <div class="col-md-12">
-              <label for="inputUsername" class="form-label">Username:</label>
-              <input type="text" class="form-control" id="inputUsername" placeholder="${userInfo.username}">
+              <label for="username" class="form-label">Username:</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="${userInfo.username}">
             </div>
             <div class="col-md-12">
-              <label for="inputEmail" class="form-label">Email:</label>
-              <input type="text" class="form-control" id="inputEmail" placeholder="${userInfo.email}">
+              <label for="email" class="form-label">Email:</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="${userInfo.email}">
             </div>
             <div class="col-md-6">
-              <label for="inputFirstName" class="form-label">First Name:</label>
-              <input type="text" class="form-control" id="inputFirstName" placeholder="${userInfo.firstName}">
+              <label for="firstName" class="form-label">First Name:</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" placeholder="${userInfo.firstName}">
             </div>
             <div class="col-md-6">
-              <label for="inputLastName" class="form-label">Last Name:</label>
-              <input type="text" class="form-control" id="inputLastName" placeholder="${userInfo.lastName}">
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" placeholder="${userInfo.lastName}">
             </div>
             <div class="col-md-6">
-              <label for="inputCity" class="form-label">City:</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="${userInfo.city}">
+              <label for="city" class="form-label">City:</label>
+              <input type="text" class="form-control" id="city" name="city" placeholder="${userInfo.city}">
             </div>
             <div class="col-md-6">
-              <label for="inputCountry" class="form-label">Country:</label>
-              <input type="text" class="form-control" id="inputCountry" placeholder="${userInfo.country}">
+              <label for="country" class="form-label">Country:</label>
+              <input type="text" class="form-control" id="country" name="country" placeholder="${userInfo.country}">
             </div>            
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary" style="width: 150px;" href="/userInfo/${userInfo.id}">Submit update</button>
+              <button type="submit" class="btn btn-primary" style="width: 150px;">Submit update</button>
             </div>
           </form>
         </div>
