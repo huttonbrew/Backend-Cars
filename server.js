@@ -329,50 +329,29 @@ app.put('/userInfo/:id', async (req, res) => {
 });
 
 
-// app.get('/compare', async (req, res) => {
-//  console.log("test")
-//     let compareCars = await listOfEvs.findOne({
-        
 
-//         where: {
-//             brand: "Tesla",
-           
-        
-//         }
-
-//     })
-//     console.log(compareCars)
-//     res.send(compareCars)
-        
-        
-       
-  
-    
-//     })
-
-    // app.get('/compare', async (req, res) => {
-    //     //try{
-    //     let list = await listOfEvs.findAll();
-    
-    //    res.send(list);
-    //     res.json(listOfEvs);    
-    //     } catch(error){
-    //         console.log(error)
-    //         return res.status(500).json({ error: "Something went wrong" })
-    //     }
-    // })
-
-    app.get('/compare', async (req, res) => {
+//get list of EVs
+    app.get('/compareEVs', async (req, res) => {
         
         let compareCars = await listOfEvs.findAll();
+
+        //     where: {
+        //         brand: req.query.brand
+        //     }
+
+        // })
     
-       res.send(compareCars);
-        // res.json(Userinfo);    
-        // } catch(error){
-        //     console.log(error)
-        //     return res.status(500).json({ error: "Something went wrong" })
-        //}
+        res.send(compareCars);
+    res.send(compareCars);
+    res.render('compare', {
+        locals: {
+            compareCars
+        }
     })
+});
+
+
+
 
 
 
