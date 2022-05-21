@@ -353,6 +353,20 @@ app.get('/EV', async (req, res) => {
     }
 })
 
+//get list of EVs
+app.get('/compareEVs', async (req, res) => {
+
+
+    let compareCars = await listOfEvs.findAll();
+
+    
+res.render('compareEVs', {
+    locals: {
+        compareCars
+    }
+})
+});
+
 app.put('/listOfEvs/:id', async (req, res) => {
 
     await listOfEvs.update(
