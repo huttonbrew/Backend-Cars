@@ -59,39 +59,47 @@
         <p class="text-center fs-3" style="padding-top: 130px; margin-bottom: 8px;">Register</p>
     </div>
     <div class="d-flex justify-content-center">
-        <form class="row g-3" style="max-width: 630px; padding-top: 10px; width: 85%;">
+        <form class="row g-3" style="max-width: 630px; padding-top: 10px; width: 85%;" action="/userInfo?_method=POST" method="POST">
             <div class="col-md-6">
-                <label for="inputUsername" class="form-label">Username:</label>
-                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" value="username">
               </div>
               <div class="col-md-6">
-                <label for="inputEmail" class="form-label">Email:</label>
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                <label for="password" class="form-label">Password:</label>
+                <input type="text" class="form-control" name="password" placeholder="Password">
               </div>
               <div class="col-md-6">
-                <label for="inputFirstName" class="form-label">First Name:</label>
-                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" class="form-control" name="email" placeholder="Email">
               </div>
               <div class="col-md-6">
-                <label for="inputLastName" class="form-label">Last Name:</label>
-                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                <label for="nickname" class="form-label">NIckname:</label>
+                <input type="text" class="form-control" name="nickname" placeholder="Email">
               </div>
               <div class="col-md-6">
-                <label for="inputCity" class="form-label">City:</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="City">
+                <label for="firstName" class="form-label">First Name:</label>
+                <input type="text" class="form-control" name="firstName" placeholder="First Name">
               </div>
               <div class="col-md-6">
-                <label for="inputCountry" class="form-label">Country:</label>
-                <input type="text" class="form-control" id="inputCountry" placeholder="Country">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+              </div>
+              <div class="col-md-6">
+                <label for="city" class="form-label">City:</label>
+                <input type="text" class="form-control" name="city" placeholder="City">
+              </div>
+              <div class="col-md-6">
+                <label for="country" class="form-label">Country:</label>
+                <input type="text" class="form-control" name="country" placeholder="Country">
               </div>            
         <div class="col-md-6">
-            <label for="inputBrand" class="form-label">Brand:</label>
-            <input type="text" class="form-control" id="inputBrand" placeholder="Tesla">
+            <label for="brand" class="form-label">Brand:</label>
+            <input type="text" class="form-control" name="brand" placeholder="Tesla">
         </div>
         <div class="col-md-6">
-            <label for="inputModel" class="form-label">Model:</label>
+            <label for="model" class="form-label">Model:</label>
             <div class="input-group">
-                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                <select class="form-select" id="inputGroupSelect03" name="model" aria-label="Example select with button addon">
                   <option selected>Choose...</option>
                   <option value="1">Model_3</option>
                   <option value="2">Model_S</option>
@@ -101,9 +109,9 @@
               </div>
         </div>
         <div class="col-md-6">
-            <label for="inputYear" class="form-label">Year:</label>
+            <label for="year" class="form-label">Year:</label>
             <div class="input-group">
-                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                <select class="form-select" id="inputGroupSelect03" name="year" aria-label="Example select with button addon">
                   <option selected>Choose...</option>
                   <option value="1">2012</option>
                   <option value="2">2013</option>
@@ -120,31 +128,31 @@
               </div>
         </div>
         <div class="col-md-6">
-            <label for="inputMileage" class="form-label">Mileage:</label>
-            <input type="text" class="form-control" id="inputMileage" placeholder="Mileage">
+            <label for="mileage" class="form-label">Mileage:</label>
+            <input type="text" class="form-control" name="mileage" placeholder="Mileage">
         </div>
         <div class="col-md-6">
-            <label for="inputRangeMi" class="form-label">Range (mi):</label>
-            <input type="text" class="form-control" id="inputRangeMi" placeholder="Range (mi)">
+            <label for="range_mi" class="form-label">Range (mi):</label>
+            <input type="text" class="form-control" name="range_mi" placeholder="Range (mi)">
         </div>
         <div class="col-md-6">
-            <label for="inputRangeKm" class="form-label">Range (km):</label>
-            <input type="text" class="form-control" id="inputRangeKm" placeholder="Range (km)">
+            <label for="range_km" class="form-label">Range (km):</label>
+            <input type="text" class="form-control" name="range_km" placeholder="Range (km)">
         </div>
         <div class="col-md-6">
-            <label for="inputkWh_100mi" class="form-label">kWh/100mi:</label>
-            <input type="text" class="form-control" id="inputkWh_100mi" placeholder="kWh/100mi">
+            <label for="kWh_100mi" class="form-label">kWh/100mi:</label>
+            <input type="text" class="form-control" name="kWh_100mi" placeholder="kWh/100mi">
         </div>            
         <div class="col-md-6">
-            <label for="inputkWh_100km" class="form-label">kWh/100km:</label>
-            <input type="text" class="form-control" id="inputkWh_100km" placeholder="kWh/100km">
+            <label for="kWh_100km" class="form-label">kWh/100km:</label>
+            <input type="text" class="form-control" name="kWh_100km" placeholder="kWh/100km">
         </div>
         <div class="col-md-12">
-            <label for="inputImage" class="form-label">image:</label>
-            <input type="text" class="form-control" id="inputImage" placeholder="Image URL">
+            <label for="image" class="form-label">Image:</label>
+            <input type="text" class="form-control" name="image" placeholder="Image URL">
         </div>
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary" style="width: 150px;" href="#">Submit</button>
+            <button type="submit" class="btn btn-primary" style="width: 150px;">Submit</button>
         </div>
         </form>
     </div>

@@ -5,6 +5,8 @@ const math = require('math');
 const { sequelize, userInfo, userCarInfo, listOfEvs } = require('./models');
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
+const methodOverride = require('method-override');
+
 //const sequelize = new Sequelize ("postgres://luna@localhost:5432/postgres");
 
 //app.use('/', require('./routes/endpoints'));
@@ -23,6 +25,8 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 
 app.use(express())
+app.use(methodOverride('_method'))
+
 
 const logger = winston.createLogger({
     level: 'info',
@@ -58,53 +62,12 @@ main()
 
 
 
-app.get('/userInfo', async (req, res) => {
-    //try{
-    let Userinfos = await userInfo.findAll();
-
-   res.send(Userinfos);
-    // res.json(Userinfo);    
-    // } catch(error){
-    //     console.log(error)
-    //     return res.status(500).json({ error: "Something went wrong" })
-    //}
-})
-
-app.get('/userCarInfo', async (req, res) => {
-    //try{
-    let Userinfos = await userCarInfo.findAll();
-
-   res.send(Userinfos);
-    // res.json(Userinfo);    
-    // } catch(error){
-    //     console.log(error)
-    //     return res.status(500).json({ error: "Something went wrong" })
-    //}
-})
-
-app.get('/EV', async (req, res) => {
-    let car = await listOfEvs.findOne ({
-        where: {
-            year: req.query.year,
-            model: req.query.model
-        }
-    })
-    if (car == null) {
-        res.statusCode = 400;
-        res.send('Not found');
-    } else {
-        res.statusCode = 200;
-        res.send(car);
-    }
-})
-
-
 //Garage page (need to change params to query)
 app.get('/garage', async (req, res) => {
 
     let userGarage = await userCarInfo.findAll({
         where: {
-            username: req.query.username
+            username: req.body.username
         }
     })
 
@@ -222,10 +185,200 @@ app.get('/usersubmitcar', async (req, res) => {
     })
 });
 
-//Register a new user
-app.get('/register', async (req, res) => {
-    res.render('registration', {
+//creating an account
+app.post('/userInfo', async function (req, res) {
+    createdUser = await userInfo.create(
+        {
+            firstName: req.body.firstName, 
+            lastName: req.body.lastName, 
+            city: req.body.city, 
+            country: req.body.country, 
+            email: req.body.email, 
+            username: req.body.username,
+            image: req.body.image,
+            password: await bcrypt.hash(req.body.password, 12)
+         }
+    ) 
+
+    let createdUserCar = await userCarInfo.create(
+        {username, brand, nickname, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
+    )
+    let newUserInfo = await userCarInfo.findOne ({
+        where: {
+            username: createdUserCar.username
+        }
     })
+
+    if (newUserInfo == null) {
+        res.statusCode = 400;
+        res.send('Unsuccessful');
+    } else {
+        res.send('Successful!')
+    }
+});
+
+//delete user & the info
+app.delete('/userInfo/:id', async (req, res) => {
+    let deleteUser =  await userInfo.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+
+    if (deleteUser == null) {
+        res.send (`${req.params.id} is not a valid id`)
+    } else {
+   await userInfo.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.sendStatus(200, deleteUser);
+    }
+})
+
+//Changing user info
+app.put('/userCarInfo/:id', async (req, res) => {
+
+    await userCarInfo.update(
+        {
+        username: req.body.username,
+        brand:req.body.brand,
+        model:req.body.model,
+        year:req.body.year,
+        mileage: req.body.mileage,
+        range_mi:req.body.range_mi,
+        range_km:req.body.range_km,
+        kWh_100mi:req.body.kWh_100mi,
+        kWh_100km:req.body.kWh_100km
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+    let newUserCarInfo = userCarInfo.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+    
+    res.sendStatus(200, newUserCarInfo)
+    console.log(newUserCarInfo)
+});
+
+//Changing user info
+app.put('/userInfo/:id', async (req, res) => {
+
+    await userInfo.update(
+        {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            city: req.body.city,
+            country: req.body.country,
+            email: req.body.email,
+            username: req.body.username,
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+    let account = userInfo.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+    
+    res.render('account', {
+        locals: {
+            account
+        }
+    })
+});
+
+// login authentication
+app.post('/login', async function (req, res){
+    email = req.body.email
+
+    if (email == null || req.body.password == null) { // security risk to store pass in variable?
+        res.status(400).send('please fill in all fields')
+    } else {
+        let user = await userInfo.findOne({
+            where: {
+                email: email
+            }
+        })
+        if(user == null) {
+            res.status(404).send('user not found')
+        } else {
+            let isValid = await bcrypt.compare(req.body.password, user.password)
+            if(isValid == true) {
+                res.status(200).send('login successful')
+            } else {
+                res.status(401).send('invalid credentials')
+            }
+        }
+    }
+});
+
+
+//CALLS FOR ADMIN
+
+app.get('/userInfo', async (req, res) => {
+    let Userinfos = await userInfo.findAll();
+
+   res.send(Userinfos);
+})
+
+app.get('/userCarInfo', async (req, res) => {
+    let Userinfos = await userCarInfo.findAll();
+
+   res.send(Userinfos);
+})
+
+app.get('/EV', async (req, res) => {
+    let car = await listOfEvs.findOne ({
+        where: {
+            year: req.query.year,
+            model: req.query.model
+        }
+    })
+    if (car == null) {
+        res.statusCode = 400;
+        res.send('Not found');
+    } else {
+        res.statusCode = 200;
+        res.send(car);
+    }
+})
+
+app.put('/listOfEvs/:id', async (req, res) => {
+
+    await listOfEvs.update(
+        {
+            brand: req.body.brand,
+            model: req.body.model,
+            year: req.body.year,
+            range_mi: req.body.range_mi,
+            range_km: req.body.range_km,
+            kWh_100mi: req.body.kWh_100mi,
+            kWh_100km: req.body.kWh_100km
+        }, {
+            where:{
+                id: req.params.id
+            }
+        })
+
+    let newlistOfEvs = listOfEvs.findOne ({
+        where: {
+            id: req.params.id
+        }
+    })
+    
+    res.sendStatus(200, newlistOfEvs)
+    console.log(newlistOfEvs)
+
 });
 
 // calculate averages for all data-related fields
@@ -263,167 +416,7 @@ app.get('/averages', async (req, res) => {
     res.status(200).send(resultsObj)
 });
 
-//creating an account
-app.post('/userInfo', async (req, res) => {
-    let createdUser = await userInfo.create(
-        {
-            firstName: req.body.firstName, 
-            lastName: req.body.lastName, 
-            city: req.body.city, 
-            country: req.body.country, 
-            email: req.body.email, 
-            username: req.body.username,
-            password: await bcrypt.hash(req.body.password, 12)
-         }
-    )
-    createdUser = await userCarInfo.create(
-        {username, brand, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
-    )
-    let newUserInfo = await userCarInfo.findOne ({
-        where: {
-            username: req.body.username
-        }
-    })
-    if (newUserInfo == null) {
-        res.statusCode = 400;
-        res.send('Unsuccessful');
-    } else {
-        res.statusCode = 200;
-        res.send(newUserInfo);
-    }
-});
-
-app.delete('/userInfo/:id', async (req, res) => {
-    let deleteUser =  await userInfo.findOne ({
-        where: {
-            id: req.params.id
-        }
-    })
-
-    if (deleteUser == null) {
-        res.send (`${req.params.id} is not a valid id`)
-    } else {
-   await userInfo.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-    res.sendStatus(200, deleteUser);
-    }
-})
-
-app.put('/userCarInfo/:id', async (req, res) => {
-
-    await userCarInfo.update(
-        {
-        username: req.body.username,
-        brand:req.body.brand,
-        model:req.body.model,
-        year:req.body.year,
-        mileage: req.body.mileage,
-        range_mi:req.body.range_mi,
-        range_km:req.body.range_km,
-        kWh_100mi:req.body.kWh_100mi,
-        kWh_100km:req.body.kWh_100km
-        }, {
-            where:{
-                id: req.params.id
-            }
-        })
-
-    let newUserCarInfo = userCarInfo.findOne ({
-        where: {
-            id: req.params.id
-        }
-    })
-    
-    res.sendStatus(200, newUserCarInfo)
-    console.log(newUserCarInfo)
-});
-
-app.put('/listOfEvs/:id', async (req, res) => {
-
-    await listOfEvs.update(
-        {
-            brand: req.body.brand,
-            model: req.body.model,
-            year: req.body.year,
-            range_mi: req.body.range_mi,
-            range_km: req.body.range_km,
-            kWh_100mi: req.body.kWh_100mi,
-            kWh_100km: req.body.kWh_100km
-        }, {
-            where:{
-                id: req.params.id
-            }
-        })
-
-    let newlistOfEvs = listOfEvs.findOne ({
-        where: {
-            id: req.params.id
-        }
-    })
-    
-    res.sendStatus(200, newlistOfEvs)
-    console.log(newlistOfEvs)
-
-});
-
-app.put('/userInfo/:id', async (req, res) => {
-
-    await userInfo.update(
-        {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            city: req.body.city,
-            country: req.body.country,
-            email: req.body.email,
-            username: req.body.username,
-            password: req.body.password,
-        }, {
-            where:{
-                id: req.params.id
-            }
-        })
-
-    let newuserInfo = userInfo.findOne ({
-        where: {
-            id: req.params.id
-        }
-    })
-    
-    res.sendStatus(200, newuserInfo)
-    console.log(newuserInfo)
-});
-
-// login authentication
-app.post('/login', async function (req, res){
-    email = req.body.email
-
-    if (email == null || req.body.password == null) { // security risk to store pass in variable?
-        res.status(400).send('please fill in all fields')
-    } else {
-        let user = await userInfo.findOne({
-            where: {
-                email: email
-            }
-        })
-        if(user == null) {
-            res.status(404).send('user not found')
-        } else {
-            let isValid = await bcrypt.compare(req.body.password, user.password)
-            if(isValid == true) {
-                res.status(200).send('login successful')
-            } else {
-                res.status(401).send('invalid credentials')
-            }
-        }
-    }
-});
-
 app.listen(5900, async ()=> {
     console.log('Server is running on port 5900')
-    // await sequelize.authenticate()
-    // console.log("Database Connected!!")
-    //await sequelize.sync()
+
 })
