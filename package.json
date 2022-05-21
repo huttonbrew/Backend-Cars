@@ -19,6 +19,8 @@
     "express-es6-template-engine": "^2.2.3",
     "express-handlebars": "^6.0.5",
     "handlebars": "^4.7.7",
+    "math": "^0.0.3",
+    "mathjs": "^10.5.3",
     "moment": "^2.29.3",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.16",
