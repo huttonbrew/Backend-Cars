@@ -85,6 +85,9 @@ app.get('/userCarInfo', async (req, res) => {
 app.get('/EV', async (req, res) => {
     let car = await listOfEvs.findOne ({
         where: {
+
+                
+
             year: req.query.year,
             model: req.query.model
         }
@@ -382,9 +385,9 @@ app.put('/userInfo/:id', async (req, res) => {
             password: req.body.password,
         }, {
             where:{
-                id: req.params.id
-            }
-        })
+                id: req.params.id,
+            },
+        });
 
     let newuserInfo = userInfo.findOne ({
         where: {
@@ -395,6 +398,35 @@ app.put('/userInfo/:id', async (req, res) => {
     res.sendStatus(200, newuserInfo)
     console.log(newuserInfo)
 });
+
+
+
+//get list of EVs
+    app.get('/compareEVs', async (req, res) => {
+        
+        
+        let compareCars = await listOfEvs.findAll();
+
+        //     where: {
+        //         brand: req.params.brand
+        //     }
+
+        // })
+    
+        // res.send(compareCars);
+    // res.send(compareCars);
+    res.render('compareEVs', {
+        locals: {
+            compareCars
+        }
+    })
+});
+
+
+
+
+
+
 
 // login authentication
 app.post('/login', async function (req, res){
@@ -420,6 +452,10 @@ app.post('/login', async function (req, res){
         }
     }
 });
+
+
+
+
 
 app.listen(5900, async ()=> {
     console.log('Server is running on port 5900')
