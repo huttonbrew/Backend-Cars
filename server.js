@@ -367,6 +367,8 @@ res.render('compareEVs', {
 })
 });
 
+
+
 app.put('/listOfEvs/:id', async (req, res) => {
 
     await listOfEvs.update(
