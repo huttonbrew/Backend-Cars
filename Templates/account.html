@@ -87,7 +87,7 @@
           Update
         </button>
         <div class="dropdown-menu" style="width: 360px;"">
-          <form class="row g-3"style="padding: 15px;" method="POST" action="/userInfo/${userInfo.username}">
+          <form class="row g-3"style="padding: 15px;" action="/userInfo/${userInfo.id}?_method=PUT" method="POST">
             <div class="col-md-12">
               <label for="username" class="form-label">Username:</label>
               <input type="text" class="form-control" id="username" name="username" placeholder="${userInfo.username}">

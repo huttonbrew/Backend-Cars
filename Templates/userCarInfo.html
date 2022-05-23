@@ -57,8 +57,12 @@
     </nav>
     ${userCar.map(userCar => `
       <div class="d-flex justify-content-center">
-        <p class="text-center fs-3" style="padding-top: 130px; margin-bottom: 8px;">Your Car</p>
+        <p class="text-center fs-3" style="padding-top: 130px;">Your Car</p>
     </div>
+    <div class="d-flex justify-content-center">
+      <img src="${userCar.image}" class="img-fluid rounded-start" alt="${userCar}" style="width: 300px;">
+    </div>
+      <p class="text-center fs-3" style="margin-bottom: 8px;">${userCar.nickname}</p>
         <div class="d-flex justify-content-center">
             <form class="row g-3"  style="max-width: 750px; padding-top: 25px; width: 85%;">
               <div class="col-md-3">
@@ -93,38 +97,42 @@
               Update
             </button>
             <div class="dropdown-menu" style="width: 360px;"">
-              <form class="row g-3"style="padding: 15px;">
-                <div class="col-md-6">
-                  <label for="inputBrand" class="form-label">Brand:</label>
-                  <input type="text" class="form-control" id="inputBrand" placeholder="Tesla">
+              <form class="row g-3"style="padding: 15px;"  action="/userCarInfo/${userCar.id}?_method=PUT" method="POST">
+                <div class="col-md-12">
+                  <label for="nickname" class="form-label">Nickname:</label>
+                  <input type="text" class="form-control" name="nickname" placeholder="${userCar.nickname}">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputModel" class="form-label">Model:</label>
-                  <input type="text" class="form-control" id="inputModel" placeholder="${userCar.model}">
+                  <label for="brand" class="form-label">Brand:</label>
+                  <input type="text" class="form-control" name="brand" placeholder="Tesla">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputYear" class="form-label">Year:</label>
-                  <input type="text" class="form-control" id="inputYear" placeholder="${userCar.year}">
+                  <label for="model" class="form-label">Model:</label>
+                  <input type="text" class="form-control" name="model" placeholder="${userCar.model}">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputMileage" class="form-label">Mileage:</label>
-                  <input type="text" class="form-control" id="inputMileage" placeholder="${userCar.mileage}">
+                  <label for="year" class="form-label">Year:</label>
+                  <input type="text" class="form-control" name="year" placeholder="${userCar.year}">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputRangeMi" class="form-label">Range (mi):</label>
-                  <input type="text" class="form-control" id="inputRangeMi" placeholder="${userCar.range_mi}">
+                  <label for="mileage" class="form-label">Mileage:</label>
+                  <input type="text" class="form-control" name="mileage" placeholder="${userCar.mileage}">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputRangeKm" class="form-label">Range (km):</label>
-                  <input type="text" class="form-control" id="inputRangeKm" placeholder="${userCar.range_km}">
+                  <label for="range_mi" class="form-label">Range (mi):</label>
+                  <input type="text" class="form-control" name="range_mi" placeholder="${userCar.range_mi}">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputkWh_100mi" class="form-label">kWh/100mi:</label>
-                  <input type="text" class="form-control" id="inputkWh_100mi" placeholder="${userCar.kWh_100mi}">
+                  <label for="range_km" class="form-label">Range (km):</label>
+                  <input type="text" class="form-control" name="range_km" placeholder="${userCar.range_km}">
+                </div>
+                <div class="col-md-6">
+                  <label for="kWh_100mi" class="form-label">kWh/100mi:</label>
+                  <input type="text" class="form-control" name="kWh_100mi" placeholder="${userCar.kWh_100mi}">
                 </div>            
                 <div class="col-md-6">
-                  <label for="inputkWh_100km" class="form-label">kWh/100km:</label>
-                  <input type="text" class="form-control" id="inputkWh_100km" placeholder="${userCar.kWh_100km}">
+                  <label for="kWh_100km" class="form-label">kWh/100km:</label>
+                  <input type="text" class="form-control" name="kWh_100km" placeholder="${userCar.kWh_100km}">
                 </div>
                 <div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-primary" style="width: 150px;" href="/userCarInfo/${userCar.id}">Submit update</button>

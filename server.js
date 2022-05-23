@@ -67,7 +67,7 @@ app.get('/garage', async (req, res) => {
 
     let userGarage = await userCarInfo.findAll({
         where: {
-            username: req.body.username
+            username: req.query.username
         }
     })
 
