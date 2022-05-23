@@ -298,30 +298,32 @@ app.put('/userInfo/:id', async (req, res) => {
 });
 
 // login authentication
-app.post('/login', async function (req, res){
-    email = req.body.email
-
-    if (email == null || req.body.password == null) { // security risk to store pass in variable?
-        res.status(400).send('please fill in all fields')
+app.post('/login', async function (req, res) {
+    // first check if all fields are entered
+    if (req.body.email == "" || req.body.password == "") {
+        res.status(400).send('error: please fill in all fields')
     } else {
+        // if so, look up the user by email
         let user = await userInfo.findOne({
             where: {
-                email: email
+                email: req.body.email
             }
         })
+        // check if user exists
         if(user == null) {
-            res.status(404).send('user not found')
+            res.status(404).send('error: email not found')
         } else {
+            // if user exists, validate password
             let isValid = await bcrypt.compare(req.body.password, user.password)
-            if(isValid == true) {
-                res.status(200).send('login successful')
+            if(isValid) {
+                // if password successful, redirect to garage
+                res.status(200).sendFile('./Templates/garage.html', { root: '.' })
             } else {
-                res.status(401).send('invalid credentials')
+                res.status(401).send('invalid password')
             }
         }
     }
 });
-
 
 //CALLS FOR ADMIN
 
@@ -352,6 +354,20 @@ app.get('/EV', async (req, res) => {
         res.send(car);
     }
 })
+
+//get list of EVs
+app.get('/compareEVs', async (req, res) => {
+
+
+    let compareCars = await listOfEvs.findAll();
+
+    
+res.render('compareEVs', {
+    locals: {
+        compareCars
+    }
+})
+});
 
 app.put('/listOfEvs/:id', async (req, res) => {
 
