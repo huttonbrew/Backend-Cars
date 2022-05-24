@@ -113,7 +113,7 @@ app.post('/userInfo', async function (req, res) {
         res.statusCode = 400;
         res.send('Unsuccessful');
     } else {
-        res.send('Successful!')
+        res.render('login', {})
     }
 });
 
@@ -244,7 +244,7 @@ app.delete('/userInfo/:id', async (req, res) => {
             id: req.params.id
         }
     })
-    res.sendStatus(200, deleteUser);
+    res.render('index.html', {})
     }
 })
 
@@ -271,7 +271,7 @@ app.put('/userCarInfo/:id', async (req, res) => {
     
         let userCar= await userCarInfo.findAll({
             where: {
-                id: req.query.id
+                id: userid
             }
         })
     
