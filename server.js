@@ -57,10 +57,65 @@ async function main(){
 main()
 
 
+//-----------NON-USER PAGES-------------------------------------
 
-//*** GET REQUESTS SHOULD NEVER CONTAIN A BODY */
 
+//Get home page
+app.get('/', async (req, res) => {
+    res.render('index', {})
+});
 
+//Get login page
+app.get('/login', async (req, res) => {
+    res.render('login', {})
+});
+
+//Get registration page
+app.get('/register', async (req, res) => {
+    res.render('register', {})
+});
+
+//Get message page
+app.get('/message', async (req, res) => {
+    res.render('message', {})
+});
+
+//Get message page
+app.get('/compare', async (req, res) => {
+    res.render('compareEVs', {})
+});
+
+//creating an account
+app.post('/userInfo', async function (req, res) {
+    createdUser = await userInfo.create(
+        {
+            firstName: req.body.firstName, 
+            lastName: req.body.lastName, 
+            city: req.body.city, 
+            country: req.body.country, 
+            email: req.body.email, 
+            username: req.body.username,
+            image: req.body.image,
+            password: await bcrypt.hash(req.body.password, 12)
+         }
+    ) 
+
+    let createdUserCar = await userCarInfo.create(
+        {username, brand, nickname, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
+    )
+    let newUserInfo = await userCarInfo.findOne ({
+        where: {
+            username: createdUserCar.username
+        }
+    })
+
+    if (newUserInfo == null) {
+        res.statusCode = 400;
+        res.send('Unsuccessful');
+    } else {
+        res.render('login', {})
+    }
+});
 
 //Garage page (need to change params to query)
 app.get('/garage', async (req, res) => {
@@ -121,6 +176,9 @@ app.get('/garage', async (req, res) => {
 
 });
 
+
+//-----------USER PAGES-------------------------------------
+
 //Account page to view/update userInfo
 app.get('/account', async (req, res) => {
 
@@ -169,37 +227,6 @@ app.get('/usermessage', async (req, res) => {
     })
 });
 
-//creating an account
-app.post('/userInfo', async function (req, res) {
-    createdUser = await userInfo.create(
-        {
-            firstName: req.body.firstName, 
-            lastName: req.body.lastName, 
-            city: req.body.city, 
-            country: req.body.country, 
-            email: req.body.email, 
-            username: req.body.username,
-            image: req.body.image,
-            password: await bcrypt.hash(req.body.password, 12)
-         }
-    ) 
-
-    let createdUserCar = await userCarInfo.create(
-        {username, brand, nickname, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
-    )
-    let newUserInfo = await userCarInfo.findOne ({
-        where: {
-            username: createdUserCar.username
-        }
-    })
-
-    if (newUserInfo == null) {
-        res.statusCode = 400;
-        res.send('Unsuccessful');
-    } else {
-        res.send('Successful!')
-    }
-});
 
 //delete user & the info
 app.delete('/userInfo/:id', async (req, res) => {
@@ -217,12 +244,13 @@ app.delete('/userInfo/:id', async (req, res) => {
             id: req.params.id
         }
     })
-    res.sendStatus(200, deleteUser);
+    res.render('index.html', {})
     }
 })
 
 //Changing user info
 app.put('/userCarInfo/:id', async (req, res) => {
+    let userid = req.params.id
 
     await userCarInfo.update(
         {
@@ -237,22 +265,26 @@ app.put('/userCarInfo/:id', async (req, res) => {
         kWh_100km:req.body.kWh_100km
         }, {
             where:{
-                id: req.params.id
+                id: userid
             }
         })
-
-    let newUserCarInfo = userCarInfo.findOne ({
-        where: {
-            id: req.params.id
-        }
-    })
     
-    res.sendStatus(200, newUserCarInfo)
-    console.log(newUserCarInfo)
+        let userCar= await userCarInfo.findAll({
+            where: {
+                id: userid
+            }
+        })
+    
+        res.render('userCarInfo', {
+            locals: {
+                userCar
+            }
+        })
 });
 
 //Changing user info
 app.put('/userInfo/:id', async (req, res) => {
+    let userid = req.params.id
 
     await userInfo.update(
         {
@@ -264,22 +296,24 @@ app.put('/userInfo/:id', async (req, res) => {
             username: req.body.username,
         }, {
             where:{
-                id: req.params.id
+                id: userid
             }
         })
 
-    let account = userInfo.findOne ({
-        where: {
-            id: req.params.id
-        }
-    })
+        let account = await userInfo.findAll({
+            where: {
+                id: userid
+            }
+        })
     
-    res.render('account', {
-        locals: {
-            account
-        }
-    })
+        res.render('account', {
+            locals: {
+                account
+            }
+        })
 });
+
+//-----------LOGIN-------------------------------------
 
 // login authentication
 app.post('/login', async function (req, res) {
@@ -361,6 +395,7 @@ app.post('/login', async function (req, res) {
     }
 });
 
+//-----------CALLS FOR ADMINS-------------------------------------
 // list of EVs table
 app.get('/allcars', async (req, res) => {
 
@@ -374,8 +409,6 @@ app.get('/allcars', async (req, res) => {
 
 });
 
-
-//CALLS FOR ADMIN
 
 app.get('/userInfo', async (req, res) => {
     let Userinfos = await userInfo.findAll();

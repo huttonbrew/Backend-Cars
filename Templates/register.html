@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+    <div class="container d-flex justify-content-center">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center mb-3">
+          <a class="navbar-brand"><img
+            id="teslaLogo"
+            src="https://i.postimg.cc/Z5Nf4JjV/logo.jpg"
+            alt="Tesla Logo"
+            draggable="false"
+            height="30"
+            href="/"
+          /></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <img src="https://i.postimg.cc/Z5Nf4JjV/logo.jpg" alt="Tesla Logo" height="30" href="/">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/register">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/compareEVs">Compare EVs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/message">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+    <div class="d-flex justify-content-center">
+        <p class="text-center fs-3" style="padding-top: 130px; margin-bottom: 8px;">Register</p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <form class="row g-3" style="max-width: 630px; padding-top: 10px; width: 85%;" action="/userInfo?_method=POST" method="POST">
+        <div class="col-md-6">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" name="username" placeholder="Username" value="username">
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" class="form-control" name="email" placeholder="Email">
+          </div>
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input type="text" class="form-control" name="firstName" placeholder="First Name">
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+          </div>
+          <div class="col-md-6">
+            <label for="city" class="form-label">City:</label>
+            <input type="text" class="form-control" name="city" placeholder="City">
+          </div>
+          <div class="col-md-6">
+            <label for="country" class="form-label">Country:</label>
+            <input type="text" class="form-control" name="country" placeholder="Country">
+          </div>    
+          <div class="col-md-6">
+            <label for="nickname" class="form-label">Car's Nickname:</label>
+            <input type="text" class="form-control" name="nickname" placeholder="Car's nickname">
+          </div>        
+          <div class="col-md-6">
+            <label for="brand" class="form-label">Brand:</label>
+            <div class="input-group">
+              <select class="form-select" id="inputGroupSelect03" name="brand" aria-label="Example select with button addon">
+                <option selected>Choose...</option>
+                <option value="Tesla">Tesla</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="model" class="form-label">Model:</label>
+            <div class="input-group">
+              <select class="form-select" id="inputGroupSelect03" name="model" aria-label="Example select with button addon">
+                <option selected>Choose...</option>
+                <option value="Model_3">Model_3</option>
+                <option value="Model_S">Model_S</option>
+                <option value="Model_Y">Model_Y</option>
+                <option value="Model_X">Model_X</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="year" class="form-label">Year:</label>
+            <div class="input-group">
+                <select class="form-select" id="inputGroupSelect03" name="year" aria-label="Example select with button addon">
+                  <option selected>Choose...</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <label for="mileage" class="form-label">Mileage:</label>
+              <input type="text" class="form-control" name="mileage" placeholder="Mileage">
+          </div>
+          <div class="col-md-6">
+              <label for="range_mi" class="form-label">Range (mi):</label>
+              <input type="text" class="form-control" name="range_mi" placeholder="Range (mi)">
+          </div>
+          <div class="col-md-6">
+              <label for="range_km" class="form-label">Range (km):</label>
+              <input type="text" class="form-control" name="range_km" placeholder="Range (km)">
+          </div>
+          <div class="col-md-6">
+              <label for="kWh_100mi" class="form-label">kWh/100mi:</label>
+              <input type="text" class="form-control" name="kWh_100mi" placeholder="kWh/100mi">
+          </div>            
+          <div class="col-md-6">
+              <label for="kWh_100km" class="form-label">kWh/100km:</label>
+              <input type="text" class="form-control" name="kWh_100km" placeholder="kWh/100km">
+          </div>
+          <div class="col-md-12">
+              <label for="image" class="form-label">Image:</label>
+              <input type="text" class="form-control" name="image" placeholder="Image URL">
+          </div>
+          <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary" style="width: 150px;">Submit</button>
+          </div>
+      </form>
+    </div>
+    <footer class="text-center text-lg-start" style="padding-top: 100px;">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">EV.db</a>
+      </div>
+    </footer>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</html>
