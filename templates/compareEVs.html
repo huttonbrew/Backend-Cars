@@ -7,111 +7,68 @@
     <title>Compare</title>
 </head>
 <body>
-    
+<h5>List of EVs in our database</h5>
   
 
 <div>
-  ${compareCars.map(compareCars => `
+  ${allCars.map(allCars => `
     <table class="table">
         <thead>
           <tr>
             <th scope="col">Tesla Statistics</th>
             <th scope="col">Car</th>
-            <!-- <th scope="col">Car 2</th>
-            <th scope="col">Car 3</th>  -->
           </tr>
         </thead>
         <tbody>
-          
           <tr>
             <th scope="row">Brand</th>
-            <td>${compareCars.brand}</td>
-            <!-- <td>${compareCars.brand}</td>
-            <td>${compareCars.brand}</td> -->
+            <td>${allCars.brand}</td>
           </tr>
           <tr>
             <th scope="row">Model</th>
-            <td>${compareCars.model}</td>
-            <!-- <td>${compareCars.model}</td>
-            <td>${compareCars.model}</td> -->
+            <td>${allCars.model}</td>
           </tr>
           <tr>
             <th scope="row">Year</th>
-            <td>${compareCars.year}</td>
-            <!-- <td>${compareCars.year}</td>
-            <td>${compareCars.year}</td> -->
+            <td>${allCars.year}</td>
           </tr>
           <tr>
             <th scope="row">Top Range (mi)</th>
-            <td>${compareCars.topRange_mi}</td>
-            <!-- <td>${compareCars.topRange_mi}</td>
-            <td>${compareCars.topRange_mi}</td> -->
+            <td>${allCars.topRange_mi}</td>
           </tr>
           <tr>
             <th scope="row">Bot Range (mi)</th>
-            <td>${compareCars.botRange_mi}</td>
-            <!-- <td>${compareCars.botRange_mi}</td>
-            <td>${compareCars.botRange_mi}</td> -->
+            <td>${allCars.botRange_mi}</td>
           </tr>
           <tr>
             <th scope="row">Top Range (km)</th>
-            <td>${compareCars.topRange_km}</td>
-            <!-- <td>${compareCars.topRange_km}</td>
-            <td>${compareCars.topRange_km}</td> -->
+            <td>${allCars.topRange_km}</td>
           </tr>
-          
           <tr>
             <th scope="row">Bot Range (km) </th>
-            <td>${compareCars.botRange_km}</td>
-            <!-- <td>${compareCars.botRange_km}</td>
-            <td>${compareCars.botRange_km}</td> -->
+            <td>${allCars.botRange_km}</td>
           </tr>
           <tr>
             <th scope="row">Top KWh 100 mi </th>
-            <td>${compareCars.top_kWh_100mi}</td>
-            <!-- <td>${compareCars.top_kWh_100mi}</td>
-            <td>${compareCars.top_kWh_100mi}</td> -->
+            <td>${allCars.top_kWh_100mi}</td>
           </tr>
           <tr>
             <th scope="row">Bot KWh 100 mi</th>
-            <td>${compareCars.bot_kWh_100mi}</td>
-            <!-- <td>${compareCars.bot_kWh_100mi}</td>
-            <td>${compareCars.bot_kWh_100mi}</td> -->
+            <td>${allCars.bot_kWh_100mi}</td>
           </tr>
           <tr>
             <th scope="row">Top KWh 100 km</th>
-            <td>${compareCars.top_kWh_100km}</td>
-            <!-- <td>${compareCars.top_kWh_100km}</td>
-            <td>${compareCars.top_kWh_100km}</td> -->
+            <td>${allCars.top_kWh_100km}</td>
           </tr>
           <tr>
             <th scope="row">bot KWh 100 km</th>
-            <td>${compareCars.bot_kWh_100km}</td>
-            <!-- <td>${compareCars.bot_kWh_100km}</td>
-            <td>${compareCars.bot_kWh_100km}</td> -->
+            <td>${allCars.bot_kWh_100km}</td>
           </tr>
-          
-         
-
-
-          
-          
-          
-          
-
-          
         </tbody>
-        
       </table>
       `).join('')}
       
 </div>
-
-
-
-
-
-
 </body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
