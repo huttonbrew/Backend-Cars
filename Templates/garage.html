@@ -94,6 +94,31 @@
         </div>
       </div>
     `).join('')}
+      <p class="text-center fs-3"style="padding-top: 45px; margin-bottom: 0px;">User Average</p>
+      <div class="d-flex justify-content-evenly">
+        <div class="text-center">
+          <table class="table">
+              <thead>
+              <tr>
+                  <th scope="col">Sample</th>
+                  <th scope="col">Range (mi)</th>
+                  <th scope="col">Range (km)</th>
+                  <th scope="col">kWh/100mi</th>
+                  <th scope="col">kWh/100km</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <th scope="row">${averages.sampleSize}</th>
+                  <td>${averages.range_mi}</td>
+                  <td>${averages.range_km}</td>
+                  <td>${averages.kWh_100mi}</td>
+                  <td>${averages.kWh_100km}</td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
     ${car.map(car => `
       <p class="text-center fs-3"style="padding-top: 45px; margin-bottom: 0px;">EPA</p>
       <div class="d-flex justify-content-evenly">
