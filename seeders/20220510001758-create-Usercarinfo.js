@@ -32,7 +32,7 @@ module.exports = {
       updatedAt: new Date()
       }, {
       username: 'ddonato',
-      nickname: 'ddonsto car',
+      nickname: 'ddonato car',
       brand: 'Tesla',
       model: 'Model_S',
       year: 2022,

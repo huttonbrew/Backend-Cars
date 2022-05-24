@@ -9,7 +9,7 @@ module.exports = {
       country: 'USA',
       email: 'guest@dgcrafts.com',
       username: 'guest',
-      password: 'pokemon123',
+      password: '',
       createdAt: new Date(),
       updatedAt: new Date()
       }, {
