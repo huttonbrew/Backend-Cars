@@ -396,6 +396,19 @@ app.post('/login', async function (req, res) {
 });
 
 //-----------CALLS FOR ADMINS-------------------------------------
+// list of EVs table
+app.get('/allcars', async (req, res) => {
+
+    let allCars = await listOfEvs.findAll()
+
+    res.render('compareEVs', {
+        locals: {
+            allCars
+        }
+    })
+
+});
+
 
 app.get('/userInfo', async (req, res) => {
     let Userinfos = await userInfo.findAll();

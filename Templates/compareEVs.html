@@ -7,50 +7,9 @@
     <title>Compare</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
-    <div class="container d-flex justify-content-center">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center mb-3">
-          <a class="navbar-brand"><img
-            id="teslaLogo"
-            src="https://i.postimg.cc/Z5Nf4JjV/logo.jpg"
-            alt="Tesla Logo"
-            draggable="false"
-            height="30"
-            href="/"
-          /></a>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <img src="https://i.postimg.cc/Z5Nf4JjV/logo.jpg" alt="Tesla Logo" height="30" href="/">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/register">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="//compareEVs">Compare EVs</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/message">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+
+
+
 <div>
   ${compareCars.map(compareCars => `
     <table class="table">
@@ -63,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          
+
           <tr>
             <th scope="row">Brand</th>
             <td>${compareCars.brand}</td>
@@ -100,7 +59,7 @@
             <!-- <td>${compareCars.topRange_km}</td>
             <td>${compareCars.topRange_km}</td> -->
           </tr>
-          
+
           <tr>
             <th scope="row">Bot Range (km) </th>
             <td>${compareCars.botRange_km}</td>
@@ -131,21 +90,21 @@
             <!-- <td>${compareCars.bot_kWh_100km}</td>
             <td>${compareCars.bot_kWh_100km}</td> -->
           </tr>
-          
-         
 
 
-          
-          
-          
-          
 
-          
+
+
+
+
+
+
+
         </tbody>
-        
+
       </table>
       `).join('')}
-      
+
 </div>
 
 
@@ -156,4 +115,4 @@
 </body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-</html>
+</html> 
