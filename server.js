@@ -67,7 +67,7 @@ app.get('/garage', async (req, res) => {
 
     let userGarage = await userCarInfo.findAll({
         where: {
-            username: req.body.username
+            id: req.query.id
         }
     })
 
@@ -126,7 +126,7 @@ app.get('/account', async (req, res) => {
 
     let account = await userInfo.findAll({
         where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 
@@ -142,7 +142,7 @@ app.get('/car', async (req, res) => {
 
     let userCar= await userCarInfo.findAll({
         where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 
@@ -158,23 +158,7 @@ app.get('/usermessage', async (req, res) => {
 
     let userInfo = await userCarInfo.findAll({
         where: {
-            username: req.query.username
-        }
-    })
-
-    res.render('userMessage', {
-        locals: {
-            userInfo
-        }
-    })
-});
-
-//userSubmitCar page to view/update user car info
-app.get('/usersubmitcar', async (req, res) => {
-
-    let userInfo = await userCarInfo.findAll({
-        where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 
@@ -317,7 +301,59 @@ app.post('/login', async function (req, res) {
             let isValid = await bcrypt.compare(req.body.password, user.password)
             if(isValid) {
                 // if password successful, redirect to garage
-                res.status(200).sendFile('./Templates/garage.html', { root: '.' })
+                let userGarage = await userCarInfo.findAll({
+                    where: {
+                        id: user.id
+                    }
+                })
+            
+                let car = await listOfEvs.findAll({
+                    where: {
+                        year: userGarage[0].year,
+                        model: userGarage[0].model,
+                    }
+                })
+            
+                let comparables = await userCarInfo.findAll({
+                    where: {
+                        model: userGarage[0].model
+                    }
+                })
+            
+                 // list all the properties you care about
+                properties = ['year', 'mileage', 'range_mi', 'range_km', 'kWh_100mi', 'kWh_100km']
+             
+                // create a parsing function
+                let parser = (array, stat) => {
+                    return array.map(x => x[stat])
+                }
+                // create an averaging function
+                let average = (array) => {
+                    let avg = array.reduce((a, b) => a + b)/array.length
+                    return math.round(avg)
+                }
+            
+                // calculate a bunch of averages and store the results
+                let averages = {}
+            
+                for(i=0; i < properties.length; i++) {
+                    // parse the metric you care about
+                    let parsedArray = parser(comparables, properties[i])
+                    // calc the average
+                    let avg = average(parsedArray)
+                    // store the avg to an obj
+                    averages[properties[i]] = avg
+                }
+             
+                averages.sampleSize = comparables.length
+            
+                res.render('garage', {
+                    locals: {
+                        userGarage,
+                        car,
+                        averages
+                    }
+                })
             } else {
                 res.status(401).send('invalid password')
             }
