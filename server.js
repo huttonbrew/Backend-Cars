@@ -67,7 +67,7 @@ app.get('/garage', async (req, res) => {
 
     let userGarage = await userCarInfo.findAll({
         where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 
@@ -126,7 +126,7 @@ app.get('/account', async (req, res) => {
 
     let account = await userInfo.findAll({
         where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 
@@ -142,7 +142,7 @@ app.get('/car', async (req, res) => {
 
     let userCar= await userCarInfo.findAll({
         where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 
@@ -158,23 +158,7 @@ app.get('/usermessage', async (req, res) => {
 
     let userInfo = await userCarInfo.findAll({
         where: {
-            username: req.query.username
-        }
-    })
-
-    res.render('userMessage', {
-        locals: {
-            userInfo
-        }
-    })
-});
-
-//userSubmitCar page to view/update user car info
-app.get('/usersubmitcar', async (req, res) => {
-
-    let userInfo = await userCarInfo.findAll({
-        where: {
-            username: req.query.username
+            id: req.query.id
         }
     })
 

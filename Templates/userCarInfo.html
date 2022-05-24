@@ -7,54 +7,54 @@
     <title>Garage</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
-      <div class="container d-flex justify-content-center">
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center mb-3">
-            <a class="navbar-brand"><img
-              id="teslaLogo"
-              src="../assets/logo 2.JPG"
-              alt="Tesla Logo"
-              draggable="false"
-              height="30"
-            /></a>
-          </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <img src="../assets/logo 2.JPG" alt="Tesla Logo" height="30">
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="garage?username=${userCar[0].username}">Your Garage</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="account?username=${userCar[0].username}">Your Acount</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-signpost-split-fill"></i>
-                    Contact us
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                    <li><a class="dropdown-item" href="usermessage?username=${userCar[0].username}"><i class="bi bi-chat-fill"></i>Send us a message</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                    <li><a class="dropdown-item" href="index.html">Log out</a></li>\
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
+  <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+    <div class="container d-flex justify-content-center">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center mb-3">
+          <a class="navbar-brand"><img
+            id="teslaLogo"
+            src="../assets/logo 2.JPG"
+            alt="Tesla Logo"
+            draggable="false"
+            height="30"
+          /></a>
         </div>
-      </nav>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-center" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <img src="../assets/logo 2.JPG" alt="Tesla Logo" height="30">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="garage?id=${userCar[0].id}">Your Garage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="account?id=${userCar[0].id}">Your Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="car?id=${userCar[0].id}">Your Car</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-signpost-split-fill"></i>
+                  Contact us
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                  <li><a class="dropdown-item" href="usermessage?id=${userCar[0].id}"><i class="bi bi-chat-fill"></i>Send us a message</a></li>
+                  <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                  <li><a class="dropdown-item" href="index.html">Log out</a></li>\ 
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
     ${userCar.map(userCar => `
       <div class="d-flex justify-content-center">
         <p class="text-center fs-3" style="padding-top: 130px;">Your Car</p>
@@ -104,16 +104,44 @@
                 </div>
                 <div class="col-md-6">
                   <label for="brand" class="form-label">Brand:</label>
-                  <input type="text" class="form-control" name="brand" placeholder="Tesla">
-                </div>
+                  <div class="input-group">
+                      <select class="form-select" id="inputGroupSelect03" name="brand" aria-label="Example select with button addon">
+                        <option selected>Choose...</option>
+                        <option value="1">Tesla</option>
+                      </select>
+                    </div>
+              </div>
                 <div class="col-md-6">
                   <label for="model" class="form-label">Model:</label>
-                  <input type="text" class="form-control" name="model" placeholder="${userCar.model}">
-                </div>
-                <div class="col-md-6">
+                  <div class="input-group">
+                      <select class="form-select" id="inputGroupSelect03" name="model" aria-label="Example select with button addon">
+                        <option selected>Choose...</option>
+                        <option value="1">Model_3</option>
+                        <option value="2">Model_S</option>
+                        <option value="3">Model_Y</option>
+                        <option value="4">Model_x</option>
+                      </select>
+                    </div>
+              </div>
+              <div class="col-md-6">
                   <label for="year" class="form-label">Year:</label>
-                  <input type="text" class="form-control" name="year" placeholder="${userCar.year}">
-                </div>
+                  <div class="input-group">
+                      <select class="form-select" id="inputGroupSelect03" name="year" aria-label="Example select with button addon">
+                        <option selected>Choose...</option>
+                        <option value="1">2012</option>
+                        <option value="2">2013</option>
+                        <option value="3">2014</option>
+                        <option value="4">2015</option>
+                        <option value="5">2016</option>
+                        <option value="6">2017</option>
+                        <option value="7">2018</option>
+                        <option value="8">2019</option>
+                        <option value="9">2020</option>
+                        <option value="10">2021</option>
+                        <option value="11">2022</option>
+                      </select>
+                    </div>
+              </div>
                 <div class="col-md-6">
                   <label for="mileage" class="form-label">Mileage:</label>
                   <input type="text" class="form-control" name="mileage" placeholder="${userCar.mileage}">
@@ -142,7 +170,7 @@
           </div>
           </div>
     `).join('')}
-    <footer class="text-center text-lg-start" style="padding-top: 780px;">
+    <footer class="text-center text-lg-start" style="padding-top: 865px;">
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
         <a class="text-dark" href="https://mdbootstrap.com/">EV.db</a>

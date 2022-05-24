@@ -27,21 +27,23 @@
               <img src="../assets/logo 2.JPG" alt="Tesla Logo" height="30">
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-
             <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="account?username=${userGarage[0].username}">Your Account</a>
+                  <a class="nav-link active" aria-current="page" href="garage?id=${userGarage[0].id}">Your Garage</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="car?username=${userGarage[0].username}">Your Car</a>
+                  <a class="nav-link active" aria-current="page" href="account?id=${userGarage[0].id}">Your Account</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="car?id=${userGarage[0].id}">Your Car</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-signpost-split-fill"></i>
                     Contact us
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                    <li><a class="dropdown-item" href="usermessage?username=${userGarage[0].username}"><i class="bi bi-chat-fill"></i>Send us a message</a></li>
+                    <li><a class="dropdown-item" href="usermessage?id=${userGarage[0].id}"><i class="bi bi-chat-fill"></i>Send us a message</a></li>
                     <li>
                         <hr class="dropdown-divider">
                       </li>
@@ -49,10 +51,7 @@
                 </li>
               </ul>
             </div>
-            
           </div>
-        </div>
-      </nav>
         </div>
       </div>
     </nav>
