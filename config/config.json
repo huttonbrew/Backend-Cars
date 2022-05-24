@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "victorbrew",
-    "password": null,
+    "username": "postgres",
+    "password": "postgres",
     "database": "cars_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
