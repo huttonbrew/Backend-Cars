@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+      <div class="container d-flex justify-content-center">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center mb-3">
+            <a class="navbar-brand"><img
+              id="teslaLogo"
+              src="../assets/logo 2.JPG"
+              alt="Tesla Logo"
+              draggable="false"
+              height="30"
+            /></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-center" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <img src="../assets/logo 2.JPG" alt="Tesla Logo" height="30">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="garage?id=${userGarage[0].id}">Your Garage</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="account?id=${userGarage[0].id}">Your Account</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="car?id=${userGarage[0].id}">Your Car</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-signpost-split-fill"></i>
+                    Contact us
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                    <li><a class="dropdown-item" href="usermessage?id=${userGarage[0].id}"><i class="bi bi-chat-fill"></i>Send us a message</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                    <li><a class="dropdown-item" href="index.html">Log out</a></li>\ 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    ${userGarage.map(userCar => `
+      <div class="d-flex justify-content-evenly" style="padding-top: 150px;">
+        <div class="card mb-3" style="width: 75%; max-width: 400px; height:fit-content">
+            <img src="${userCar.image}" class="img-fluid rounded-start" alt="${userCar}">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title-center">${userCar.nickname}</h5>
+                        <p class="card-text-center">${userCar.year} ${userCar.model} / Mileage:${userCar.mileage}</p>
+                        <p class="card-text-center"><small class="text-muted">Last updated: ${userCar.updatedAt}</small></p>
+                    </div>
+                </div>
+        </div>
+      </div>
+      <p class="text-center fs-3" style="padding-top: 45px; margin-bottom: 0px;">Your Car</p>
+      <div class="d-flex justify-content-evenly">
+        <div class="text-center">
+          <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Car</th>
+                <th scope="col">Range (mi)</th>
+                <th scope="col">Range (km)</th>
+                <th scope="col">kWh/100mi</th>
+                <th scope="col">kWh/100km</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">${userCar.nickname}</th>
+                <td>${userCar.range_mi}</td>
+                <td>${userCar.range_km}</td>
+                <td>${userCar.kWh_100mi}</td>
+                <td>${userCar.kWh_100km}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `).join('')}
+    ${car.map(car => `
+      <p class="text-center fs-3"style="padding-top: 45px; margin-bottom: 0px;">EPA</p>
+      <div class="d-flex justify-content-evenly">
+        <div class="text-center">
+          <table class="table">
+              <thead>
+              <tr>
+                  <th scope="col">Car</th>
+                  <th scope="col">Range (mi)</th>
+                  <th scope="col">Range (km)</th>
+                  <th scope="col">kWh/100mi</th>
+                  <th scope="col">kWh/100km</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <th scope="row">${car.year} ${car.model}</th>
+                  <td>${car.botRange_mi} ~ ${car.topRange_mi}</td>
+                  <td>${car.botRange_km} ~ ${car.topRange_km}</td>
+                  <td>${car.top_kWh_100mi} ~ ${car.bot_kWh_100mi}</td>
+                  <td>${car.top_kWh_100km} ~ ${car.bot_kWh_100km}</td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    `).join('')}
+    <footer class="text-center text-lg-start" style="padding-top: 50px;">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">EV.db</a>
+      </div>
+    </footer>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</html>
