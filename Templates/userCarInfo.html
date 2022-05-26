@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+    <div class="container d-flex justify-content-center">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center mb-3">
+          <a class="navbar-brand"><img
+            id="teslaLogo"
+            src="https://i.postimg.cc/Z5Nf4JjV/logo.jpg"
+            alt="Tesla Logo"
+            draggable="false"
+            height="30"
+          /></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-center" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <img src="https://i.postimg.cc/Z5Nf4JjV/logo.jpg" alt="Tesla Logo" height="30">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="garage?id=${userCar[0].id}">Your Garage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="account?id=${userCar[0].id}">Your Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="car?id=${userCar[0].id}">Your Car</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-signpost-split-fill"></i>
+                  Contact us
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                  <li><a class="dropdown-item" href="usermessage?id=${userCar[0].id}"><i class="bi bi-chat-fill"></i>Send us a message</a></li>
+                  <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                  <li><a class="dropdown-item" href="index.html">Log out</a></li>\ 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+    ${userCar.map(userCar => `
+      <div class="d-flex justify-content-center">
+        <p class="text-center fs-3" style="padding-top: 130px;">Your Car</p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <img src="${userCar.image}" class="img-fluid rounded-start" alt="${userCar}" style="width: 300px;">
+    </div>
+      <p class="text-center fs-3" style="margin-bottom: 8px;">${userCar.nickname}</p>
+        <div class="d-flex justify-content-center">
+            <form class="row g-3"  style="max-width: 750px; padding-top: 25px; width: 85%;">
+              <div class="col-md-3">
+                <label for="inputBrand" class="form-label">Brand: ${userCar.brand}</label>
+              </div>
+              <div class="col-md-3">
+                <label for="inputModel" class="form-label">Model: ${userCar.model}</label>
+              </div>            
+              <div class="col-md-3">
+                <label for="inputYear" class="form-label">Year: ${userCar.year}</label>
+              </div>
+              <div class="col-md-3">
+                <label for="inputMileage" class="form-label">Mileage: ${userCar.mileage}</label>
+              </div>
+            <div class="col-md-3">
+              <label for="inputRangeMi" class="form-label">Range(mi): ${userCar.range_mi}mi</label>
+            </div>
+            <div class="col-md-3">
+              <label for="inputRangeKm" class="form-label">Range(km): ${userCar.range_km}km</label>
+            </div>
+            <div class="col-md-3">
+              <label for="inputkWh_100mi" class="form-label">kWh/100mi: ${userCar.kWh_100mi}</label>
+            </div>            
+            <div class="col-md-3">
+              <label for="inputkWh_100km" class="form-label">kWh/100km: ${userCar.kWh_100km}</label>
+            </div>
+          </form>
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="dropdown" style="padding-top: 25px;">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+              Update
+            </button>
+            <div class="dropdown-menu" style="width: 360px;"">
+              <form class="row g-3"style="padding: 15px;"  action="/userCarInfo/${userCar.id}?_method=PUT" method="POST">
+                <div class="col-md-12">
+                  <label for="nickname" class="form-label">Nickname:</label>
+                  <input type="text" class="form-control" name="nickname" placeholder="${userCar.nickname}">
+                </div>
+                <div class="col-md-6">
+                  <label for="brand" class="form-label">Brand:</label>
+                  <div class="input-group">
+                      <select class="form-select" id="inputGroupSelect03" name="brand" aria-label="Example select with button addon">
+                        <option selected>Choose...</option>
+                        <option value="1">Tesla</option>
+                      </select>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                <label for="model" class="form-label">Model:</label>
+                <div class="input-group">
+                  <select class="form-select" id="inputGroupSelect03" name="model" aria-label="Example select with button addon">
+                    <option selected>Choose...</option>
+                    <option value="Model_3">Model_3</option>
+                    <option value="Model_S">Model_S</option>
+                    <option value="Model_Y">Model_Y</option>
+                    <option value="Model_X">Model_X</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="year" class="form-label">Year:</label>
+                <div class="input-group">
+                    <select class="form-select" id="inputGroupSelect03" name="year" aria-label="Example select with button addon">
+                      <option selected>Choose...</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                    </select>
+                  </div>
+              </div>
+                <div class="col-md-6">
+                  <label for="mileage" class="form-label">Mileage:</label>
+                  <input type="text" class="form-control" name="mileage" placeholder="${userCar.mileage}">
+                </div>
+                <div class="col-md-6">
+                  <label for="range_mi" class="form-label">Range (mi):</label>
+                  <input type="text" class="form-control" name="range_mi" placeholder="${userCar.range_mi}">
+                </div>
+                <div class="col-md-6">
+                  <label for="range_km" class="form-label">Range (km):</label>
+                  <input type="text" class="form-control" name="range_km" placeholder="${userCar.range_km}">
+                </div>
+                <div class="col-md-6">
+                  <label for="kWh_100mi" class="form-label">kWh/100mi:</label>
+                  <input type="text" class="form-control" name="kWh_100mi" placeholder="${userCar.kWh_100mi}">
+                </div>            
+                <div class="col-md-6">
+                  <label for="kWh_100km" class="form-label">kWh/100km:</label>
+                  <input type="text" class="form-control" name="kWh_100km" placeholder="${userCar.kWh_100km}">
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary" style="width: 150px;" href="/userCarInfo/${userCar.id}">Submit update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          </div>
+    `).join('')}
+    <footer class="text-center text-lg-start" style="padding-top: 865px;">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">EV.db</a>
+      </div>
+    </footer>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</html>
