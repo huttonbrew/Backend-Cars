@@ -3,15 +3,15 @@
 const { sequelize } = require("../models");
 
 module.exports = {
-  async up(queryInterface, Sequelize, userInfo) {
-    await queryInterface.createTable('userCarInfo', {
+  async up(queryInterface, Sequelize, user_info) {
+    await queryInterface.createTable('user_car_info', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
-          model: {tableName: 'userCarInfo'},
+          model: {tableName: 'user_car_info'},
           key: 'id',
       }
       },
@@ -62,6 +62,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('userCarInfo');
+    await queryInterface.dropTable('user_car_info');
   }
 };

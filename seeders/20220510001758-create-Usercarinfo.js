@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('userCarInfo', [{
+    await queryInterface.bulkInsert('user_car_info', [{
       username: 'guest',
       nickname: 'guest car',
       brand: 'Tesla',
@@ -32,7 +32,7 @@ module.exports = {
       updatedAt: new Date()
       }, {
       username: 'ddonato',
-      nickname: 'ddonsto car',
+      nickname: 'ddonato car',
       brand: 'Tesla',
       model: 'Model_S',
       year: 2022,
