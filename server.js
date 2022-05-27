@@ -244,7 +244,8 @@ app.delete('/userInfo/:id', async (req, res) => {
             id: req.params.id
         }
     })
-    res.render('index.html', {})
+    // res.render('index.html', {})
+    res.send("ok")
     }
 })
 
