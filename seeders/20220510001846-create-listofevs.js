@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('listOfEvs', [
+    await queryInterface.bulkInsert('list_of_evs', [
     //https://www.fueleconomy.gov/
     //2012
     {
