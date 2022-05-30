@@ -11,8 +11,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
-          model: {tableName: 'user_car_info'},
-          key: 'id',
+          model: {tableName: 'user_info'},
+          key: 'id'
       }
       },
       username: {

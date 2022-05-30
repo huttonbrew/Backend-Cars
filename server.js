@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
 const math = require('math');
-const { sequelize, userInfo, userCarInfo, listOfEvs } = require('./models');
+const { sequelize, user_info, user_car_info, list_of_evs } = require('./models');
 const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
 const methodOverride = require('method-override');
@@ -87,7 +87,7 @@ app.get('/compare', async (req, res) => {
 
 //creating an account
 app.post('/userInfo', async function (req, res) {
-    createdUser = await userInfo.create(
+    createdUser = await user_info.create(
         {
             firstName: req.body.firstName, 
             lastName: req.body.lastName, 
@@ -100,16 +100,16 @@ app.post('/userInfo', async function (req, res) {
          }
     ) 
 
-    let createdUserCar = await userCarInfo.create(
+    let createdUserCar = await user_car_info.create(
         {username, brand, nickname, model, year, mileage, range_mi, range_km, kWh_100mi, kWh_100km } = req.body
     )
-    let newUserInfo = await userCarInfo.findOne ({
+    let newuser_info = await user_car_info.findOne ({
         where: {
             username: createdUserCar.username
         }
     })
 
-    if (newUserInfo == null) {
+    if (newuser_info == null) {
         res.statusCode = 400;
         res.send('Unsuccessful');
     } else {
@@ -120,20 +120,20 @@ app.post('/userInfo', async function (req, res) {
 //Garage page (need to change params to query)
 app.get('/garage', async (req, res) => {
 
-    let userGarage = await userCarInfo.findAll({
+    let userGarage = await user_car_info.findAll({
         where: {
             id: req.query.id
         }
     })
 
-    let car = await listOfEvs.findAll({
+    let car = await list_of_evs.findAll({
         where: {
             year: userGarage[0].year,
             model: userGarage[0].model,
         }
     })
 
-    let comparables = await userCarInfo.findAll({
+    let comparables = await user_car_info.findAll({
         where: {
             model: userGarage[0].model
         }
@@ -179,10 +179,10 @@ app.get('/garage', async (req, res) => {
 
 //-----------USER PAGES-------------------------------------
 
-//Account page to view/update userInfo
+//Account page to view/update user_info
 app.get('/account', async (req, res) => {
 
-    let account = await userInfo.findAll({
+    let account = await user_info.findAll({
         where: {
             id: req.query.id
         }
@@ -195,10 +195,10 @@ app.get('/account', async (req, res) => {
     })
 });
 
-//userCarInfo page to view/update user car info
+//user_car_info page to view/update user car info
 app.get('/car', async (req, res) => {
 
-    let userCar= await userCarInfo.findAll({
+    let userCar= await user_car_info.findAll({
         where: {
             id: req.query.id
         }
@@ -214,7 +214,7 @@ app.get('/car', async (req, res) => {
 //userMessage page for a registered user to send us a message
 app.get('/usermessage', async (req, res) => {
 
-    let userInfo = await userCarInfo.findAll({
+    let userInfo = await user_car_info.findAll({
         where: {
             id: req.query.id
         }
@@ -230,7 +230,7 @@ app.get('/usermessage', async (req, res) => {
 
 //delete user & the info
 app.delete('/userInfo/:id', async (req, res) => {
-    let deleteUser =  await userInfo.findOne ({
+    let deleteUser =  await user_info.findOne ({
         where: {
             id: req.params.id
         }
@@ -239,7 +239,7 @@ app.delete('/userInfo/:id', async (req, res) => {
     if (deleteUser == null) {
         res.send (`${req.params.id} is not a valid id`)
     } else {
-   await userInfo.destroy({
+   await user_info.destroy({
         where: {
             id: req.params.id
         }
@@ -252,7 +252,7 @@ app.delete('/userInfo/:id', async (req, res) => {
 app.put('/userCarInfo/:id', async (req, res) => {
     let userid = req.params.id
 
-    await userCarInfo.update(
+    await user_car_info.update(
         {
         username: req.body.username,
         brand:req.body.brand,
@@ -269,7 +269,7 @@ app.put('/userCarInfo/:id', async (req, res) => {
             }
         })
     
-        let userCar= await userCarInfo.findAll({
+        let userCar= await user_car_info.findAll({
             where: {
                 id: userid
             }
@@ -286,7 +286,7 @@ app.put('/userCarInfo/:id', async (req, res) => {
 app.put('/userInfo/:id', async (req, res) => {
     let userid = req.params.id
 
-    await userInfo.update(
+    await user_info.update(
         {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -300,7 +300,7 @@ app.put('/userInfo/:id', async (req, res) => {
             }
         })
 
-        let account = await userInfo.findAll({
+        let account = await user_info.findAll({
             where: {
                 id: userid
             }
@@ -322,7 +322,7 @@ app.post('/login', async function (req, res) {
         res.status(400).send('error: please fill in all fields')
     } else {
         // if so, look up the user by email
-        let user = await userInfo.findOne({
+        let user = await user_info.findOne({
             where: {
                 email: req.body.email
             }
@@ -335,20 +335,20 @@ app.post('/login', async function (req, res) {
             let isValid = await bcrypt.compare(req.body.password, user.password)
             if(isValid) {
                 // if password successful, redirect to garage
-                let userGarage = await userCarInfo.findAll({
+                let userGarage = await user_car_info.findAll({
                     where: {
                         id: user.id
                     }
                 })
             
-                let car = await listOfEvs.findAll({
+                let car = await list_of_evs.findAll({
                     where: {
                         year: userGarage[0].year,
                         model: userGarage[0].model,
                     }
                 })
             
-                let comparables = await userCarInfo.findAll({
+                let comparables = await user_car_info.findAll({
                     where: {
                         model: userGarage[0].model
                     }
@@ -399,7 +399,7 @@ app.post('/login', async function (req, res) {
 // list of EVs table
 app.get('/allcars', async (req, res) => {
 
-    let allCars = await listOfEvs.findAll()
+    let allCars = await list_of_evs.findAll()
 
     res.render('compareEVs', {
         locals: {
@@ -410,20 +410,20 @@ app.get('/allcars', async (req, res) => {
 });
 
 
-app.get('/userInfo', async (req, res) => {
-    let Userinfos = await userInfo.findAll();
+app.get('/user_info', async (req, res) => {
+    let userInfos = await user_info.findAll();
 
-   res.send(Userinfos);
+   res.send(userInfos);
 })
 
-app.get('/userCarInfo', async (req, res) => {
-    let Userinfos = await userCarInfo.findAll();
+app.get('/user_car_info', async (req, res) => {
+    let userInfos = await user_car_info.findAll();
 
-   res.send(Userinfos);
+   res.send(userInfos);
 })
 
 app.get('/EV', async (req, res) => {
-    let car = await listOfEvs.findOne ({
+    let car = await list_of_evs.findOne ({
         where: {
             year: req.query.year,
             model: req.query.model
@@ -442,7 +442,7 @@ app.get('/EV', async (req, res) => {
 app.get('/compareEVs', async (req, res) => {
 
 
-    let compareCars = await listOfEvs.findAll();
+    let compareCars = await list_of_evs.findAll();
 
     
 res.render('compareEVs', {
@@ -454,9 +454,9 @@ res.render('compareEVs', {
 
 
 
-app.put('/listOfEvs/:id', async (req, res) => {
+app.put('/list_of_evs/:id', async (req, res) => {
 
-    await listOfEvs.update(
+    await list_of_evs.update(
         {
             brand: req.body.brand,
             model: req.body.model,
@@ -471,21 +471,21 @@ app.put('/listOfEvs/:id', async (req, res) => {
             }
         })
 
-    let newlistOfEvs = listOfEvs.findOne ({
+    let newlist_of_evs = list_of_evs.findOne ({
         where: {
             id: req.params.id
         }
     })
     
-    res.sendStatus(200, newlistOfEvs)
-    console.log(newlistOfEvs)
+    res.sendStatus(200, newlist_of_evs)
+    console.log(newlist_of_evs)
 
 });
 
 // calculate averages for all data-related fields
 app.get('/averages', async (req, res) => {
     // extract all data
-    let cars = await userCarInfo.findAll()
+    let cars = await user_car_info.findAll()
 
     // list all the properties you care about
     properties = ['year', 'mileage', 'range_mi', 'range_km', 'kWh_100mi', 'kWh_100km']
