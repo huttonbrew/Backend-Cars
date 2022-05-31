@@ -7,6 +7,13 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+<<<<<<< HEAD
+        references: {
+          model: {tableName: 'user_info'},
+          key: 'id'
+      }
+=======
+>>>>>>> ebfe26b18f9b31308c6c2fb352f3a2eeee6f9582
       },
       username: {
         type: Sequelize.STRING,

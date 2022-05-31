@@ -7,6 +7,10 @@ const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
 const methodOverride = require('method-override');
 
+const PORT = process.env.PORT || 3001;
+const env = process.env.NODE_ENV || "production";
+
+
 //const sequelize = new Sequelize ("postgres://luna@localhost:5432/postgres");
 
 //app.use('/', require('./routes/endpoints'));
@@ -26,6 +30,10 @@ app.set('view engine', 'html');
 
 app.use(express())
 app.use(methodOverride('_method'))
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
+
 
 
 
@@ -523,7 +531,7 @@ app.get('/averages', async (req, res) => {
     res.status(200).send(resultsObj)
 });
 
-app.listen(5900, async ()=> {
-    console.log('Server is running on port 5900')
+// app.listen(5900, async ()=> {
+//     console.log('Server is running on port 5900')
 
-})
+// })
