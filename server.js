@@ -7,6 +7,11 @@ const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
 const methodOverride = require('method-override');
 
+const PORT = process.env.PORT || 3001;
+
+const env = process.env.NODE_ENV || "production";
+
+
 //const sequelize = new Sequelize ("postgres://luna@localhost:5432/postgres");
 
 //app.use('/', require('./routes/endpoints'));
@@ -26,6 +31,20 @@ app.set('view engine', 'html');
 
 app.use(express())
 app.use(methodOverride('_method'))
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
+
+
+user_car_info.belongsTo(user_info, {
+    foreignKey: 'id',
+    constraints: true,
+    onDelete: 'cascade'
+  });
+
+  user_info.hasOne(user_car_info, {
+    onDelete: 'cascade'
+  });
 
 
 const logger = winston.createLogger({
@@ -244,7 +263,8 @@ app.delete('/userInfo/:id', async (req, res) => {
             id: req.params.id
         }
     })
-    res.render('index.html', {})
+    // res.render('index.html', {})
+    res.send("Ok")
     }
 })
 
