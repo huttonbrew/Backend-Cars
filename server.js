@@ -212,7 +212,7 @@ app.get('/car', async (req, res) => {
     })
 });
 
-//userMessage page for a registered user to send us a message (CANNOT delete from user_info if the id is associated is still in user_car_info)
+//userMessage page for a registered user to send us a message (CANNOT delete from user_info if the id is associated is still in user_car_info becasue they are linked by foreign key)
 app.get('/usermessage', async (req, res) => {
 
     let userInfo = await user_car_info.findAll({
