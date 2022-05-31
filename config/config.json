@@ -14,11 +14,11 @@
 
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    
+    "username": "hjikfizgalraaz",
+    "password": "773913c0c49282ed9731820f700bb081ddc3cde040c155f6f8d5c934cb3a34a1",
+    "database": "dd33a3dql2u69t",
+    "host": "ec2-3-234-131-8.compute-1.amazonaws.com"
 
   },
   "production": {

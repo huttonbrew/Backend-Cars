@@ -8,7 +8,6 @@ const es6Renderer = require('express-es6-template-engine');
 const methodOverride = require('method-override');
 
 const PORT = process.env.PORT || 3001;
-
 const env = process.env.NODE_ENV || "production";
 
 
@@ -532,7 +531,7 @@ app.get('/averages', async (req, res) => {
     res.status(200).send(resultsObj)
 });
 
-app.listen(5900, async ()=> {
-    console.log('Server is running on port 5900')
+// app.listen(5900, async ()=> {
+//     console.log('Server is running on port 5900')
 
-})
+// })
