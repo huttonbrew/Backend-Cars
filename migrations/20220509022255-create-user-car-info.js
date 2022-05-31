@@ -44,7 +44,7 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      userId: {
+      userInfoId: {
         autoIncrement: true,
         type: Sequelize.INTEGER,
         references: {

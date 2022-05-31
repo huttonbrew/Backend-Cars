@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       user_car_info.belongsTo(user_info, {
         foreignKey: 'id',
-        constraints: true,
+        constraints: false,
         onDelete: 'cascade'
       });
     }
@@ -64,9 +64,6 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    userId: {
-      type: DataTypes.INTEGER,
     }
   }, {
     sequelize,
