@@ -27,15 +27,6 @@ app.set('view engine', 'html');
 app.use(express())
 app.use(methodOverride('_method'))
 
-user_car_info.belongsTo(user_info, {
-    foreignKey: 'id',
-    constraints: true,
-    onDelete: 'cascade'
-  });
-
-  user_info.hasOne(user_car_info, {
-    onDelete: 'cascade'
-  });
 
 
 const logger = winston.createLogger({
@@ -221,7 +212,7 @@ app.get('/car', async (req, res) => {
     })
 });
 
-//userMessage page for a registered user to send us a message
+//userMessage page for a registered user to send us a message (CANNOT delete from user_info if the id is associated is still in user_car_info)
 app.get('/usermessage', async (req, res) => {
 
     let userInfo = await user_car_info.findAll({
@@ -249,13 +240,17 @@ app.delete('/userInfo/:id', async (req, res) => {
     if (deleteUser == null) {
         res.send (`${req.params.id} is not a valid id`)
     } else {
+    await user_car_info.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
    await user_info.destroy({
         where: {
             id: req.params.id
         }
     })
-    // res.render('index.html', {})
-    res.send("Ok")
+    res.render('index.html', {})
     }
 })
 
