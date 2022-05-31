@@ -27,6 +27,16 @@ app.set('view engine', 'html');
 app.use(express())
 app.use(methodOverride('_method'))
 
+user_car_info.belongsTo(user_info, {
+    foreignKey: 'id',
+    constraints: true,
+    onDelete: 'cascade'
+  });
+
+  user_info.hasOne(user_car_info, {
+    onDelete: 'cascade'
+  });
+
 
 const logger = winston.createLogger({
     level: 'info',
@@ -244,7 +254,8 @@ app.delete('/userInfo/:id', async (req, res) => {
             id: req.params.id
         }
     })
-    res.render('index.html', {})
+    // res.render('index.html', {})
+    res.send("Ok")
     }
 })
 

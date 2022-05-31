@@ -12,8 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate({user_info}) {
       // define association here
       user_car_info.belongsTo(user_info, {
-        onDelete: "CASCADE"
-      })
+        foreignKey: 'id',
+        constraints: true,
+        onDelete: 'cascade'
+      });
     }
   }
   user_car_info.init(
@@ -62,6 +64,9 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    userId: {
+      type: DataTypes.INTEGER,
     }
   }, {
     sequelize,

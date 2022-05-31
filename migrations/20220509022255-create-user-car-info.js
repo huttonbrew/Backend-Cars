@@ -1,19 +1,12 @@
-'use strict';
-
-const { sequelize } = require("../models");
 
 module.exports = {
-  async up(queryInterface, Sequelize, user_info) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('user_car_info', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-        references: {
-          model: {tableName: 'user_info'},
-          key: 'id'
-      }
       },
       username: {
         type: Sequelize.STRING,
@@ -50,6 +43,17 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING
+      },
+      userId: {
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'user_info'
+          },
+          key: 'id'
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

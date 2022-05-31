@@ -37,7 +37,12 @@
     "type": "git",
     "url": "git+https://github.com/huttonbrew/Backend-Cars.git"
   },
-  "keywords": [],
+  "keywords": [
+    "nodejs",
+    "sequelize",
+    "one-to-many",
+    "association"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
